@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Henrique William - Performance, Saúde & Bem-estar</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap');
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #f8fafc;
+            color: #0f172a;
+            scroll-behavior: smooth;
+        }
+
+        .bg-primary { background-color: #1e40af; } 
+        .text-primary { color: #1e40af; }
+
+        .card-shadow {
+            box-shadow: 0 10px 30px -5px rgba(30, 64, 175, 0.1);
+        }
+
+        .section-padding { padding: 80px 20px; }
+
+        .btn-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .btn-hover:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 25px -5px rgba(30, 64, 175, 0.2);
+        }
+
+        .curriculum-card {
+            background: white;
+            border-bottom: 4px solid #3b82f6;
+            transition: all 0.3s ease;
+        }
+        .curriculum-card:hover {
+            border-bottom-color: #fbbf24;
+            transform: translateY(-5px);
+        }
+
+        .img-overlay {
+            background: linear-gradient(to right, rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.4));
+        }
+
+        .badge-savings {
+            background: #dcfce7;
+            color: #166534;
+            padding: 4px 12px;
+            border-radius: 99px;
+            font-size: 10px;
+            font-weight: 800;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/5531994858574?text=Olá,%20Henrique!%20Gostaria%20de%20saber%20mais%20sobre%20sua%20metodologia." target="_blank" class="fixed bottom-6 right-6 bg-[#25d366] text-white w-14 h-14 rounded-full flex items-center justify-center text-3xl shadow-2xl z-[100] btn-hover">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-lg border-b border-slate-100 shadow-sm">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center">
+                <span class='font-extrabold text-primary text-2xl tracking-tighter uppercase'>HENRIQUE<span class='text-blue-400'>WILLIAM</span></span>
+            </div>
+            <div class="hidden md:flex space-x-8 text-[11px] font-extrabold text-slate-500 tracking-widest uppercase">
+                <a href="#especialista" class="hover:text-primary transition">O Especialista</a>
+                <a href="#personal" class="hover:text-primary transition">Personal Trainer</a>
+                <a href="#consultoria" class="hover:text-primary transition">Consultoria Online</a>
+            </div>
+            <!-- Alterado de "Contato" para "Começar Agora" -->
+            <a href="https://wa.me/5531994858574" target="_blank" class="bg-primary text-white px-7 py-3 rounded-full font-bold text-xs hover:bg-blue-800 transition-all btn-hover uppercase tracking-widest">
+                Começar Agora
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center pt-20 overflow-hidden bg-slate-900">
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?q=80&w=2070&auto=format&fit=crop" alt="Pessoas saudáveis treinando" class="w-full h-full object-cover opacity-40">
+            <div class="absolute inset-0 img-overlay"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center relative z-10 text-white">
+            <div class="animate-fade-in">
+                <div class="inline-block bg-blue-500/20 text-blue-300 font-bold text-[10px] tracking-[0.2em] uppercase px-4 py-1.5 rounded-full mb-6 border border-blue-500/30">
+                    Performance, saúde e bem estar
+                </div>
+                <h1 class="text-5xl md:text-7xl font-extrabold leading-[1.1] mb-8">
+                    Transforme sua vida através do <span class="text-blue-400">exercício físico.</span>
+                </h1>
+                <p class="text-lg text-blue-100 mb-10 leading-relaxed max-w-lg opacity-90 font-medium">
+                    Metodologia baseada em ciência para resultados reais. Treinamento personalizado para que você alcance sua melhor versão.
+                </p>
+                <div class="flex flex-wrap gap-5">
+                    <!-- Alterado de "Ver Planos Presenciais" para "Ver Planos" -->
+                    <a href="#personal" class="bg-white text-blue-900 px-10 py-4 rounded-full font-extrabold shadow-xl hover:bg-slate-100 transition-all btn-hover uppercase tracking-wider text-sm">Ver Planos</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Specialist Authority Section -->
+    <section id="especialista" class="section-padding bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center gap-12 mb-20">
+                <div class="md:w-1/2">
+                    <img src="https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?q=80&w=2069&auto=format&fit=crop" alt="Henrique William em ação" class="rounded-[40px] shadow-2xl">
+                </div>
+                <div class="md:w-1/2">
+                    <span class="text-primary font-black text-xs uppercase tracking-[0.3em] mb-4 block">Formação Técnica</span>
+                    <h2 class="text-4xl font-extrabold text-slate-900 mb-6 uppercase tracking-tighter">O Especialista</h2>
+                    <p class="text-slate-600 mb-8 leading-relaxed font-medium">Com anos de experiência e formação sólida, ajudo pessoas de todas as idades a recuperarem a vitalidade e atingirem seus objetivos reais sem abrir mão da segurança.</p>
+                    <div class="h-1.5 w-20 bg-amber-400 rounded-full"></div>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="curriculum-card p-10 rounded-3xl card-shadow text-center md:text-left">
+                    <i class="fas fa-graduation-cap text-primary text-3xl mb-6 block"></i>
+                    <h4 class="font-bold text-slate-800 mb-3 uppercase text-sm tracking-tight">Bacharel em Educação Física</h4>
+                    <p class="text-sm text-slate-500 leading-relaxed font-medium">Fisiologia e biomecânica aplicadas para resultados seguros e eficientes.</p>
+                </div>
+                <div class="curriculum-card p-10 rounded-3xl card-shadow text-center md:text-left">
+                    <i class="fas fa-user-md text-primary text-3xl mb-6 block"></i>
+                    <h4 class="font-bold text-slate-800 mb-3 uppercase text-sm tracking-tight">Pós-Graduado em Grupos Especiais</h4>
+                    <p class="text-sm text-slate-500 leading-relaxed font-medium">Treinamento seguro para obesos, idosos, hipertensos e diabéticos.</p>
+                </div>
+                <div class="curriculum-card p-10 rounded-3xl card-shadow text-center md:text-left">
+                    <i class="fas fa-bone text-primary text-3xl mb-6 block"></i>
+                    <h4 class="font-bold text-slate-800 mb-3 uppercase text-sm tracking-tight">Pós-graduado em Reabilitação de lesões ortopédicas</h4>
+                    <p class="text-sm text-slate-500 leading-relaxed font-medium">Recupere sua mobilidade e corrija sua postura com exercícios direcionados e ciência.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Personal Trainer Plans -->
+    <section id="personal" class="section-padding bg-slate-50 border-y border-slate-200">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-extrabold text-slate-900 mb-4 uppercase tracking-tighter">Personal Presencial</h2>
+                <p class="text-slate-500 font-bold text-xs uppercase tracking-widest">Atendimento exclusivo em Belo Horizonte</p>
+            </div>
+
+            <div class="grid lg:grid-cols-3 gap-8 items-start">
+                <!-- BRONZE (Mensal) -->
+                <div class="bg-white p-10 rounded-[40px] border border-slate-200 card-shadow flex flex-col">
+                    <div class="flex justify-between items-center mb-6">
+                        <span class="text-amber-800 bg-amber-100 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest">Bronze</span>
+                        <div class="text-2xl font-extrabold text-slate-800 uppercase">Mensal</div>
+                    </div>
+                    <div class="space-y-4 mb-8 text-sm font-bold text-slate-700">
+                        <div class="flex justify-between py-3 border-b border-slate-100"><span>2x por semana</span><span class="text-primary">R$ 900</span></div>
+                        <div class="flex justify-between py-3 border-b border-slate-100"><span>3x por semana</span><span class="text-primary">R$ 1.350</span></div>
+                        <div class="flex justify-between py-3 border-b border-slate-100"><span>4x por semana</span><span class="text-primary">R$ 1.680</span></div>
+                        <div class="flex justify-between py-3"><span>5x por semana</span><span class="text-primary">R$ 2.000</span></div>
+                    </div>
+                    <div class="bg-blue-50 p-4 rounded-2xl mb-8 text-[11px] font-bold text-blue-800 leading-relaxed">
+                        <i class="fas fa-info-circle mr-1"></i> 1ª Avaliação gratuita.<br>Reavaliações subsequentes: R$ 150,00 cada.
+                    </div>
+                    <a href="https://wa.me/5531994858574?text=Olá,%20tenho%20interesse%20no%20Plano%20Bronze%20(Mensal)." target="_blank" class="mt-auto block text-center py-4 rounded-2xl bg-slate-100 text-slate-800 font-black hover:bg-primary hover:text-white transition-all text-xs uppercase tracking-widest">Selecionar Bronze</a>
+                </div>
+
+                <!-- OURO (Semestral) - MOST POPULAR -->
+                <div class="bg-primary p-12 rounded-[40px] text-white flex flex-col scale-105 z-10 shadow-2xl relative overflow-hidden border-4 border-amber-400">
+                    <div class="absolute top-0 right-0 bg-amber-400 text-blue-900 text-[10px] font-black px-10 py-2 rotate-45 translate-x-10 translate-y-4 shadow-lg">OURO</div>
+                    <div class="mb-4 text-center">
+                        <span class="bg-white/20 text-white px-4 py-1 rounded-full text-[10px] font-black uppercase tracking-widest">O Plano Mais Vendido</span>
+                    </div>
+                    <div class="text-3xl font-extrabold mb-8 uppercase text-center">Semestral</div>
+                    
+                    <div class="space-y-5 mb-8 text-sm font-bold">
+                        <div class="flex flex-col py-3 border-b border-white/10">
+                            <div class="flex justify-between"><span>2x por semana</span><span class="text-amber-400 text-lg">R$ 800</span></div>
+                            <span class="badge-savings mt-1 self-start">Economia de R$ 600,00 no contrato</span>
+                        </div>
+                        <div class="flex flex-col py-3 border-b border-white/10">
+                            <div class="flex justify-between"><span>3x por semana</span><span class="text-amber-400 text-lg">R$ 1.200</span></div>
+                            <span class="badge-savings mt-1 self-start">Economia de R$ 900,00 no contrato</span>
+                        </div>
+                        <div class="flex justify-between py-3 border-b border-white/10"><span>4x por semana</span><span class="text-amber-400 text-lg">R$ 1.520</span></div>
+                        <div class="flex justify-between py-3"><span>5x por semana</span><span class="text-amber-400 text-lg">R$ 1.800</span></div>
+                    </div>
+
+                    <div class="bg-white/10 p-5 rounded-2xl mb-8 text-[11px] font-bold border border-white/10">
+                        <p class="mb-2 text-amber-300 uppercase tracking-wider"><i class="fas fa-star mr-1"></i> Benefícios Exclusivos:</p>
+                        <ul class="space-y-1 opacity-90">
+                            <li>• 3 avaliações já inclusas</li>
+                            <li>• Planilhas comparativas ao final</li>
+                            <li>• Planejamento de longo prazo</li>
+                        </ul>
+                    </div>
+
+                    <a href="https://wa.me/5531994858574?text=Olá,%20tenho%20interesse%20no%20Plano%20Ouro%20(Semestral)." target="_blank" class="mt-auto block text-center py-5 rounded-2xl bg-amber-400 text-blue-900 font-black hover:bg-amber-300 transition-all text-xs uppercase tracking-widest shadow-xl">Selecionar Ouro</a>
+                </div>
+
+                <!-- PRATA (Trimestral) -->
+                <div class="bg-white p-10 rounded-[40px] border border-slate-200 card-shadow flex flex-col">
+                    <div class="flex justify-between items-center mb-6">
+                        <span class="text-slate-500 bg-slate-100 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest">Prata</span>
+                        <div class="text-2xl font-extrabold text-slate-800 uppercase">Trimestral</div>
+                    </div>
+                    <div class="space-y-4 mb-8 text-sm font-bold text-slate-700">
+                        <div class="flex justify-between py-3 border-b border-slate-100"><span>2x por semana</span><span class="text-primary">R$ 840</span></div>
+                        <div class="flex justify-between py-3 border-b border-slate-100"><span>3x por semana</span><span class="text-primary">R$ 1.260</span></div>
+                        <div class="flex justify-between py-3 border-b border-slate-100"><span>4x por semana</span><span class="text-primary">R$ 1.600</span></div>
+                        <div class="flex justify-between py-3"><span>5x por semana</span><span class="text-primary">R$ 1.900</span></div>
+                    </div>
+                    <div class="bg-blue-50 p-4 rounded-2xl mb-8 text-[11px] font-bold text-blue-800 leading-relaxed">
+                        <i class="fas fa-info-circle mr-1"></i> 1ª Avaliação gratuita.<br>Reavaliações subsequentes: R$ 150,00 cada.
+                    </div>
+                    <a href="https://wa.me/5531994858574?text=Olá,%20tenho%20interesse%20no%20Plano%20Prata%20(Trimestral)." target="_blank" class="mt-auto block text-center py-4 rounded-2xl bg-slate-100 text-slate-800 font-black hover:bg-primary hover:text-white transition-all text-xs uppercase tracking-widest">Selecionar Prata</a>
+                </div>
+            </div>
+
+            <!-- Payment Methods -->
+            <div class="mt-16 text-center max-w-xl mx-auto bg-white p-8 rounded-[30px] border border-slate-100 card-shadow">
+                <p class="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-6">Formas de Pagamento Aceitas</p>
+                <div class="flex justify-center items-center gap-8 md:gap-12">
+                    <div class="flex flex-col items-center gap-2">
+                        <div class="w-12 h-12 flex items-center justify-center rounded-xl bg-slate-50 text-slate-400"><i class="fas fa-qrcode text-xl"></i></div>
+                        <span class="text-[9px] font-black text-slate-500 uppercase">Pix</span>
+                    </div>
+                    <div class="flex flex-col items-center gap-2">
+                        <div class="w-12 h-12 flex items-center justify-center rounded-xl bg-slate-50 text-slate-400"><i class="fas fa-credit-card text-xl"></i></div>
+                        <span class="text-[9px] font-black text-slate-500 uppercase leading-none text-center">Cartão<br>(Débito/Crédito)</span>
+                    </div>
+                    <div class="flex flex-col items-center gap-2">
+                        <div class="w-12 h-12 flex items-center justify-center rounded-xl bg-slate-50 text-slate-400"><i class="fas fa-file-invoice-dollar text-xl"></i></div>
+                        <span class="text-[9px] font-black text-slate-500 uppercase">Boleto</span>
+                    </div>
+                </div>
+            </div>
+
+            <p class="text-center mt-10 text-slate-400 text-[10px] font-bold uppercase tracking-widest">*Valores mensais para pagamento recorrente no plano escolhido.</p>
+        </div>
+    </section>
+
+    <!-- Online Consulting -->
+    <section id="consultoria" class="section-padding bg-slate-900 text-white relative">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="max-w-4xl mx-auto text-center mb-16">
+                <span class="text-blue-400 font-black text-xs uppercase tracking-[0.4em] mb-4 block">Consultoria Online</span>
+                <h2 class="text-5xl font-extrabold mb-8 uppercase tracking-tighter leading-none text-amber-400">Treine onde quiser com excelência</h2>
+                <p class="text-slate-400 text-lg leading-relaxed font-medium">
+                    Planejamento de treinamento de alto nível no seu celular, com suporte direto para você evoluir com segurança.
+                </p>
+            </div>
+                    
+            <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <div class="bg-white/5 p-10 rounded-[40px] border border-white/10 flex flex-col hover:bg-white/10 transition-all">
+                    <div class="flex justify-between items-start mb-6">
+                        <span class="text-[10px] uppercase font-bold text-slate-500 tracking-widest">Plano Mensal</span>
+                        <i class="fas fa-calendar-day text-blue-400 text-xl"></i>
+                    </div>
+                    <span class="text-4xl font-black text-blue-400 mb-8">R$ 250</span>
+                    <ul class="text-sm space-y-3 mb-10 text-slate-400 font-medium">
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-xs text-blue-400"></i> Planilha via App Dedicado</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-xs text-blue-400"></i> Suporte Ilimitado via WhatsApp</li>
+                    </ul>
+                    <a href="https://wa.me/5531994858574?text=Olá,%20interesse%20na%20Consultoria%20Mensal." target="_blank" class="block text-center py-4 rounded-2xl border border-blue-400 text-blue-400 font-bold text-xs uppercase hover:bg-blue-400 hover:text-white transition-all tracking-widest">Selecionar Mensal</a>
+                </div>
+
+                <div class="bg-white/5 p-10 rounded-[40px] border border-amber-400/30 flex flex-col hover:bg-white/10 transition-all">
+                    <div class="flex justify-between items-start mb-6">
+                        <span class="text-[10px] uppercase font-bold text-slate-500 tracking-widest">Plano Trimestral</span>
+                        <span class="bg-amber-400 text-blue-900 text-[9px] px-3 py-1 rounded-full font-black">MELHOR PREÇO</span>
+                    </div>
+                    <span class="text-4xl font-black text-amber-400 mb-8">R$ 200<small class="text-xs text-slate-500 font-bold ml-1">/mês</small></span>
+                    <ul class="text-sm space-y-3 mb-10 text-slate-400 font-medium">
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-xs text-amber-400"></i> Todo o suporte do mensal</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-xs text-amber-400"></i> Planejamento de 12 semanas</li>
+                    </ul>
+                    <a href="https://wa.me/5531994858574?text=Olá,%20interesse%20na%20Consultoria%20Trimestral." target="_blank" class="block text-center py-4 rounded-2xl bg-amber-400 text-blue-900 font-bold text-xs uppercase hover:bg-amber-300 transition-all tracking-widest">Selecionar Trimestral</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 text-white pt-24 pb-12 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid md:grid-cols-2 gap-16 mb-20">
+                <div>
+                    <h4 class="text-3xl font-black mb-8 tracking-tighter uppercase italic">Henrique<span class="text-blue-500">William</span></h4>
+                    <p class="text-slate-500 max-w-sm text-sm font-medium leading-relaxed">
+                        Comprometido com a transformação de vidas através da ciência do movimento. Performance, reabilitação e bem-estar.
+                    </p>
+                </div>
+                <div class="text-right">
+                    <p class="text-xs font-black text-slate-600 uppercase tracking-widest mb-2">Contato Direto</p>
+                    <p class="text-4xl font-black text-white mb-4">+55 (31) 99485-8574</p>
+                    <p class="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Belo Horizonte - MG | CREF: 040018-G/MG</p>
+                </div>
+            </div>
+            <div class="pt-12 border-t border-white/5 text-center text-[10px] font-bold text-slate-700 uppercase tracking-[0.4em]">
+                &copy; 2026 Henrique William - Todos os direitos reservados.
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
+
