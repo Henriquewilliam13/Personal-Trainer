@@ -70,11 +70,37 @@
         .faq-item:hover {
             border-left-color: #fbbf24; /* Amber 400 */
         }
+
+        /* Estilo dos inputs do formulário */
+        .form-input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            background-color: #f8fafc;
+            font-size: 0.875rem;
+            transition: all 0.3s;
+        }
+        .form-input:focus {
+            outline: none;
+            border-color: #1e40af;
+            background-color: white;
+            box-shadow: 0 0 0 3px rgba(30, 64, 175, 0.1);
+        }
+        label {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #64748b;
+            margin-bottom: 6px;
+            display: block;
+        }
     </style>
   </head>
   <body>
     <!-- WhatsApp Floating Button -->
-    <a href="https://wa.me/5531994858574?text=Olá,%20Henrique!%20Gostaria%20de%20saber%20mais%20sobre%20sua%20metodologia." target="_blank" class="fixed bottom-6 right-6 bg-[#25d366] text-white w-14 h-14 rounded-full flex items-center justify-center text-3xl shadow-2xl z-[100] btn-hover">
+    <a href="https://wa.me/5531994858574?text=Olá,%20Henrique!%20Gostaria%20de%20saber%20mais%20sobre%20sua%20metodologia." target="_blank" class="fixed bottom-6 right-6 bg-[#25d366] text-white w-14 h-14 rounded-full flex items-center justify-center text-3xl shadow-2xl z-[100] btn-hover transition-transform hover:scale-110">
         <i class="fab fa-whatsapp"></i>
     </a>
 
@@ -82,7 +108,7 @@
     <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-lg border-b border-slate-100 shadow-sm">
       <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
         <div class="flex items-center">
-          <span class="font-extrabold text-primary text-2xl tracking-tighter uppercase">
+          <span class="font-extrabold text-primary text-2xl tracking-tighter uppercase cursor-pointer" onclick="window.scrollTo(0,0)">
             HENRIQUE <span class="text-blue-400">WILLIAM</span>
           </span>
         </div>
@@ -125,7 +151,7 @@
       </div>
     </section>
 
-    <!-- Pain Points Section (NOVA SEÇÃO) -->
+    <!-- Pain Points Section -->
     <section class="py-20 bg-slate-50 border-b border-slate-100">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-16">
@@ -237,7 +263,7 @@
         </div>
         <div class="grid lg:grid-cols-3 gap-8 items-start">
           <!-- BRONZE (Mensal) -->
-          <div class="bg-white p-10 rounded-[40px] border border-slate-200 card-shadow flex flex-col">
+          <div class="bg-white p-10 rounded-[40px] border border-slate-200 card-shadow flex flex-col hover:-translate-y-2 transition-transform duration-300">
             <div class="flex justify-between items-center mb-6">
               <span class="text-amber-800 bg-amber-100 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest">Bronze</span>
               <div class="text-2xl font-extrabold text-slate-800 uppercase">Mensal</div>
@@ -311,13 +337,13 @@
                 <li>• Planejamento de longo prazo</li>
               </ul>
             </div>
-            <a href="https://wa.me/5531994858574?text=Olá,%20tenho%20interesse%20no%20Plano%20Ouro%20(Semestral)." target="_blank" class="mt-auto block text-center py-5 rounded-2xl bg-amber-400 text-blue-900 font-black hover:bg-amber-300 transition-all text-xs uppercase tracking-widest shadow-xl">
+            <a href="https://wa.me/5531994858574?text=Olá,%20tenho%20interesse%20no%20Plano%20Ouro%20(Semestral)." target="_blank" class="mt-auto block text-center py-5 rounded-2xl bg-amber-400 text-blue-900 font-black hover:bg-amber-300 transition-all text-xs uppercase tracking-widest shadow-xl transform hover:scale-105">
                 Selecionar Ouro
             </a>
           </div>
 
           <!-- PRATA (Trimestral) -->
-          <div class="bg-white p-10 rounded-[40px] border border-slate-200 card-shadow flex flex-col">
+          <div class="bg-white p-10 rounded-[40px] border border-slate-200 card-shadow flex flex-col hover:-translate-y-2 transition-transform duration-300">
             <div class="flex justify-between items-center mb-6">
               <span class="text-slate-500 bg-slate-100 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest">Prata</span>
               <div class="text-2xl font-extrabold text-slate-800 uppercase">Trimestral</div>
@@ -382,6 +408,110 @@
         <p class="text-center mt-10 text-slate-400 text-[10px] font-bold uppercase tracking-widest">
           *Valores mensais para pagamento recorrente no plano escolhido.
         </p>
+
+        <!-- FORMULÁRIO DE CADASTRO PERSONAL -->
+        <div class="mt-24 max-w-4xl mx-auto bg-white rounded-[40px] shadow-2xl border border-slate-100 overflow-hidden relative">
+            <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-blue-500 via-primary to-blue-500"></div>
+            <div class="p-8 md:p-12">
+                <div class="text-center mb-10">
+                    <span class="bg-blue-50 text-blue-600 px-4 py-1.5 rounded-full text-[10px] font-extrabold uppercase tracking-widest">Vagas Limitadas</span>
+                    <h3 class="text-2xl md:text-3xl font-extrabold text-slate-900 mt-6 mb-3 uppercase">Solicitação de Vaga e Análise de Perfil</h3>
+                    <p class="text-slate-500 text-sm font-medium leading-relaxed max-w-xl mx-auto">
+                        Para garantir a excelência no atendimento, o número de alunos presenciais é restrito. Preencha seus dados abaixo para verificarmos a disponibilidade e entrarmos em contato.
+                    </p>
+                </div>
+
+                <form id="cadastroForm" class="grid md:grid-cols-2 gap-6" onsubmit="enviarWhatsApp(event)">
+                    <!-- Nome -->
+                    <div class="col-span-2 md:col-span-1">
+                        <label for="nome">Nome Completo</label>
+                        <input type="text" id="nome" class="form-input" placeholder="Digite seu nome" required>
+                    </div>
+
+                    <!-- Idade e Gênero -->
+                    <div class="grid grid-cols-2 gap-6 col-span-2 md:col-span-1">
+                        <div>
+                            <label for="idade">Idade</label>
+                            <input type="number" id="idade" class="form-input" placeholder="Ex: 30" required>
+                        </div>
+                        <div>
+                            <label for="genero">Gênero</label>
+                            <select id="genero" class="form-input cursor-pointer" required>
+                                <option value="" disabled selected>Selecione</option>
+                                <option value="Masculino">Masculino</option>
+                                <option value="Feminino">Feminino</option>
+                                <option value="Prefiro não dizer">Outro</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Email -->
+                    <div class="col-span-2 md:col-span-1">
+                        <label for="email">E-mail</label>
+                        <input type="email" id="email" class="form-input" placeholder="seu@email.com" required>
+                    </div>
+
+                    <!-- Frequência -->
+                    <div class="col-span-2 md:col-span-1">
+                        <label for="frequencia">Frequência Desejada</label>
+                        <select id="frequencia" class="form-input cursor-pointer" required>
+                            <option value="" disabled selected>Quantas vezes na semana?</option>
+                            <option value="2x na semana">2x na semana</option>
+                            <option value="3x na semana">3x na semana</option>
+                            <option value="4x na semana">4x na semana</option>
+                            <option value="5x na semana">5x na semana</option>
+                        </select>
+                    </div>
+
+                    <!-- Plano de Interesse -->
+                    <div class="col-span-2 md:col-span-1">
+                        <label for="plano">Plano de Interesse</label>
+                        <select id="plano" class="form-input cursor-pointer" required>
+                            <option value="" disabled selected>Qual plano prefere?</option>
+                            <option value="Bronze (Mensal)">Bronze (Mensal)</option>
+                            <option value="Prata (Trimestral)">Prata (Trimestral)</option>
+                            <option value="Ouro (Semestral)">Ouro (Semestral)</option>
+                            <option value="Ainda estou decidindo">Ainda estou decidindo</option>
+                        </select>
+                    </div>
+
+                    <!-- Horários -->
+                    <div class="col-span-2 md:col-span-1">
+                        <label for="horario">Horário de Preferência</label>
+                        <select id="horario" class="form-input cursor-pointer" required>
+                            <option value="" disabled selected>Qual turno prefere?</option>
+                            <option value="Manhã (06h - 12h)">Manhã (06h - 12h)</option>
+                            <option value="Tarde (12h - 18h)">Tarde (12h - 18h)</option>
+                            <option value="Noite (18h - 22h)">Noite (18h - 22h)</option>
+                            <option value="Flexível">Tenho horário flexível</option>
+                        </select>
+                    </div>
+
+                    <!-- Como conheceu -->
+                    <div class="col-span-2">
+                        <label for="conheceu">Como nos conheceu?</label>
+                        <select id="conheceu" class="form-input cursor-pointer">
+                            <option value="" disabled selected>Selecione</option>
+                            <option value="Instagram">Instagram</option>
+                            <option value="Indicação">Indicação de amigo/aluno</option>
+                            <option value="Google">Pesquisa no Google</option>
+                            <option value="Outros">Outros</option>
+                        </select>
+                    </div>
+
+                    <!-- Botão -->
+                    <div class="col-span-2 mt-4">
+                        <button type="submit" class="w-full bg-primary text-white py-4 rounded-xl font-bold uppercase tracking-widest shadow-xl hover:bg-blue-800 transition-all btn-hover flex justify-center items-center gap-2">
+                            <span>Enviar Solicitação</span>
+                            <i class="fas fa-paper-plane text-sm"></i>
+                        </button>
+                        <p class="text-center text-xs text-slate-400 mt-4 font-medium">
+                            <i class="fas fa-lock mr-1"></i> Seus dados estão seguros e serão enviados diretamente para o WhatsApp.
+                        </p>
+                    </div>
+                </form>
+            </div>
+        </div>
       </div>
     </section>
 
@@ -397,9 +527,9 @@
             Planejamento de treinamento de alto nível no seu celular, com suporte direto para você evoluir com segurança.
           </p>
         </div>
-        <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-20">
           <!-- Plano Básico (Mensal) -->
-          <div class="bg-white/5 p-10 rounded-[40px] border border-white/10 flex flex-col hover:bg-white/10 transition-all">
+          <div class="bg-white/5 p-10 rounded-[40px] border border-white/10 flex flex-col hover:bg-white/10 transition-all transform hover:-translate-y-2">
             <div class="flex justify-between items-start mb-6">
               <span class="text-[10px] uppercase font-bold text-slate-500 tracking-widest">Plano Básico (Mensal)</span>
               <i class="fas fa-calendar-day text-blue-400 text-xl"></i>
@@ -422,7 +552,8 @@
           </div>
           
           <!-- Plano Premium (Trimestral) -->
-          <div class="bg-white/5 p-10 rounded-[40px] border border-amber-400/30 flex flex-col hover:bg-white/10 transition-all">
+          <div class="bg-white/5 p-10 rounded-[40px] border border-amber-400/30 flex flex-col hover:bg-white/10 transition-all transform hover:-translate-y-2 relative overflow-hidden">
+            <div class="absolute top-0 right-0 bg-amber-400 text-blue-900 text-[8px] font-black px-6 py-1 rotate-45 translate-x-6 translate-y-3">POPULAR</div>
             <div class="flex justify-between items-start mb-6">
               <span class="text-[10px] uppercase font-bold text-slate-500 tracking-widest">Plano Premium (Trimestral)</span>
               <span class="bg-amber-400 text-blue-900 text-[9px] px-3 py-1 rounded-full font-black">MELHOR PREÇO</span>
@@ -452,6 +583,83 @@
             </a>
           </div>
         </div>
+
+        <!-- NOVO FORMULÁRIO DE CONSULTORIA (GARANTA SUA VAGA) -->
+        <div class="mt-12 max-w-4xl mx-auto bg-white rounded-[40px] shadow-2xl overflow-hidden relative text-slate-900">
+            <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-amber-400 via-primary to-amber-400"></div>
+            <div class="p-8 md:p-12">
+                <div class="text-center mb-10">
+                    <span class="bg-amber-50 text-amber-600 px-4 py-1.5 rounded-full text-[10px] font-extrabold uppercase tracking-widest">Inscrições Abertas</span>
+                    <h3 class="text-2xl md:text-3xl font-extrabold text-slate-900 mt-6 mb-3 uppercase">Garanta sua Vaga</h3>
+                    <p class="text-slate-500 text-sm font-medium leading-relaxed max-w-xl mx-auto">
+                        Para manter o padrão de qualidade e o suporte próximo, as vagas para a consultoria online são controladas. Preencha seus dados para iniciar sua transformação.
+                    </p>
+                </div>
+
+                <form id="cadastroConsultoriaForm" class="grid md:grid-cols-2 gap-6" onsubmit="enviarWhatsAppConsultoria(event)">
+                    <!-- Nome -->
+                    <div class="col-span-2 md:col-span-1">
+                        <label for="nomeConsultoria">Nome Completo</label>
+                        <input type="text" id="nomeConsultoria" class="form-input" placeholder="Digite seu nome" required>
+                    </div>
+
+                    <!-- Idade e Gênero -->
+                    <div class="grid grid-cols-2 gap-6 col-span-2 md:col-span-1">
+                        <div>
+                            <label for="idadeConsultoria">Idade</label>
+                            <input type="number" id="idadeConsultoria" class="form-input" placeholder="Ex: 30" required>
+                        </div>
+                        <div>
+                            <label for="generoConsultoria">Gênero</label>
+                            <select id="generoConsultoria" class="form-input cursor-pointer" required>
+                                <option value="" disabled selected>Selecione</option>
+                                <option value="Masculino">Masculino</option>
+                                <option value="Feminino">Feminino</option>
+                                <option value="Prefiro não dizer">Outro</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Email -->
+                    <div class="col-span-2">
+                        <label for="emailConsultoria">E-mail</label>
+                        <input type="email" id="emailConsultoria" class="form-input" placeholder="seu@email.com" required>
+                    </div>
+
+                    <!-- Como conheceu -->
+                    <div class="col-span-2 md:col-span-1">
+                        <label for="conheceuConsultoria">Como nos conheceu?</label>
+                        <select id="conheceuConsultoria" class="form-input cursor-pointer">
+                            <option value="" disabled selected>Selecione</option>
+                            <option value="Instagram">Instagram</option>
+                            <option value="Indicação">Indicação de amigo/aluno</option>
+                            <option value="Google">Pesquisa no Google</option>
+                            <option value="Outros">Outros</option>
+                        </select>
+                    </div>
+
+                    <!-- Plano de Interesse -->
+                    <div class="col-span-2 md:col-span-1">
+                        <label for="planoConsultoria">Plano de Interesse</label>
+                        <select id="planoConsultoria" class="form-input cursor-pointer" required>
+                            <option value="" disabled selected>Qual plano prefere?</option>
+                            <option value="Básico (Mensal)">Básico (Mensal)</option>
+                            <option value="Premium (Trimestral)">Premium (Trimestral)</option>
+                            <option value="Ainda estou decidindo">Ainda estou decidindo</option>
+                        </select>
+                    </div>
+
+                    <!-- Botão -->
+                    <div class="col-span-2 mt-6">
+                        <button type="submit" class="w-full bg-amber-400 text-blue-900 py-4 rounded-xl font-bold uppercase tracking-widest shadow-xl hover:bg-amber-300 transition-all btn-hover flex justify-center items-center gap-2">
+                            <span>Quero Minha Vaga</span>
+                            <i class="fas fa-check-circle text-sm"></i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
       </div>
     </section>
 
@@ -467,6 +675,26 @@
             </div>
 
             <div class="grid md:grid-cols-2 gap-x-12 gap-y-10">
+                <!-- NOVA PERGUNTA 1 -->
+                <div class="faq-item">
+                    <h4 class="font-bold text-slate-900 mb-2 flex items-center gap-2">
+                        <i class="fas fa-user-check text-primary"></i> Para quem é o Personal Trainer?
+                    </h4>
+                    <p class="text-sm text-slate-600 leading-relaxed font-medium">
+                        O Personal Trainer é um serviço premium focado em oferecer uma experiência exclusiva e de altíssima qualidade. É indicado para praticantes de todos os níveis (iniciantes a avançados) que buscam segurança e acompanhamento minucioso. Além disso, é a melhor opção para quem possui condições crônicas ou lesões pré-existentes, garantindo um ambiente de treino controlado e seguro.
+                    </p>
+                </div>
+
+                <!-- NOVA PERGUNTA 2 -->
+                <div class="faq-item">
+                    <h4 class="font-bold text-slate-900 mb-2 flex items-center gap-2">
+                        <i class="fas fa-laptop-medical text-primary"></i> Para quem é a Consultoria Online?
+                    </h4>
+                    <p class="text-sm text-slate-600 leading-relaxed font-medium">
+                        A Consultoria Online é ideal para quem já possui familiaridade com o ambiente de academia e alguma experiência prévia com exercícios. É a solução perfeita para otimizar seus resultados com excelente custo-benefício, unindo liberdade de horários a um planejamento profissional com monitoramento remoto, avaliações periódicas e suporte via WhatsApp e App exclusivo.
+                    </p>
+                </div>
+
                 <!-- Entrega e Suporte -->
                 <div class="faq-item">
                     <h4 class="font-bold text-slate-900 mb-2 flex items-center gap-2">
@@ -580,6 +808,61 @@
         </div>
       </div>
     </footer>
+
+    <!-- Script para envio do WhatsApp -->
+    <script>
+        function enviarWhatsApp(e) {
+            e.preventDefault();
+            
+            const nome = document.getElementById('nome').value;
+            const idade = document.getElementById('idade').value;
+            const genero = document.getElementById('genero').value;
+            const email = document.getElementById('email').value;
+            const frequencia = document.getElementById('frequencia').value;
+            const plano = document.getElementById('plano').value;
+            const horario = document.getElementById('horario').value;
+            const conheceu = document.getElementById('conheceu').value;
+
+            const mensagem = `*NOVA SOLICITAÇÃO DE PERSONAL* 📄%0A%0A` +
+                             `*Nome:* ${nome}%0A` +
+                             `*Idade:* ${idade}%0A` +
+                             `*Gênero:* ${genero}%0A` +
+                             `*E-mail:* ${email}%0A` +
+                             `*Frequência:* ${frequencia}%0A` +
+                             `*Plano de Interesse:* ${plano}%0A` +
+                             `*Horário Preferido:* ${horario}%0A` +
+                             `*Como conheceu:* ${conheceu}%0A%0A` +
+                             `_Gostaria de verificar disponibilidade na agenda._`;
+
+            const url = `https://wa.me/5531994858574?text=${mensagem}`;
+            
+            window.open(url, '_blank');
+        }
+
+        function enviarWhatsAppConsultoria(e) {
+            e.preventDefault();
+            
+            const nome = document.getElementById('nomeConsultoria').value;
+            const idade = document.getElementById('idadeConsultoria').value;
+            const genero = document.getElementById('generoConsultoria').value;
+            const email = document.getElementById('emailConsultoria').value;
+            const conheceu = document.getElementById('conheceuConsultoria').value;
+            const plano = document.getElementById('planoConsultoria').value;
+
+            const mensagem = `*GARANTIA DE VAGA CONSULTORIA ONLINE* 💻%0A%0A` +
+                             `*Nome:* ${nome}%0A` +
+                             `*Idade:* ${idade}%0A` +
+                             `*Gênero:* ${genero}%0A` +
+                             `*E-mail:* ${email}%0A` +
+                             `*Como conheceu:* ${conheceu}%0A` +
+                             `*Plano de Interesse:* ${plano}%0A%0A` +
+                             `_Gostaria de iniciar a consultoria._`;
+
+            const url = `https://wa.me/5531994858574?text=${mensagem}`;
+            
+            window.open(url, '_blank');
+        }
+    </script>
   </body>
 </html>
 
