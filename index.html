@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>Henrique William - Performance, Saúde &amp; Bem-estar</title>
     
     <!-- Tailwind CSS -->
@@ -18,7 +18,7 @@
             font-family: 'Montserrat', sans-serif;
             background-color: #f8fafc;
             color: #0f172a;
-            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
         }
 
         .bg-primary { background-color: #1e40af; } 
@@ -28,14 +28,23 @@
             box-shadow: 0 10px 30px -5px rgba(30, 64, 175, 0.1);
         }
 
-        .section-padding { padding: 80px 20px; }
+        /* Ajuste de padding para mobile vs desktop */
+        .section-padding { padding: 60px 20px; }
+        @media (min-width: 768px) {
+            .section-padding { padding: 80px 20px; }
+        }
 
         .btn-hover {
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        .btn-hover:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 25px -5px rgba(30, 64, 175, 0.2);
+        .btn-hover:active {
+            transform: scale(0.95);
+        }
+        @media (min-width: 768px) {
+            .btn-hover:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 15px 25px -5px rgba(30, 64, 175, 0.2);
+            }
         }
 
         .curriculum-card {
@@ -43,43 +52,31 @@
             border-bottom: 4px solid #3b82f6;
             transition: all 0.3s ease;
         }
-        .curriculum-card:hover {
-            border-bottom-color: #fbbf24;
-            transform: translateY(-5px);
-        }
 
         .img-overlay {
-            background: linear-gradient(to right, rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.4));
-        }
-
-        .badge-savings {
-            background: #dcfce7;
-            color: #166534;
-            padding: 4px 12px;
-            border-radius: 99px;
-            font-size: 10px;
-            font-weight: 800;
+            background: linear-gradient(to right, rgba(15, 23, 42, 0.95), rgba(15, 23, 42, 0.6));
         }
         
-        /* Estilo específico para o FAQ */
+        /* FAQ Interativo */
         .faq-item {
             border-left: 3px solid #e2e8f0;
-            padding-left: 20px;
+            padding-left: 16px;
             transition: all 0.3s ease;
         }
-        .faq-item:hover {
-            border-left-color: #fbbf24; /* Amber 400 */
+        .faq-item:hover, .faq-item:active {
+            border-left-color: #fbbf24;
         }
 
-        /* Estilo dos inputs do formulário */
+        /* Inputs Mobile Friendly (16px previne zoom no iOS) */
         .form-input {
             width: 100%;
-            padding: 12px 16px;
+            padding: 14px 16px; /* Área de toque maior */
             border: 1px solid #e2e8f0;
             border-radius: 12px;
             background-color: #f8fafc;
-            font-size: 0.875rem;
+            font-size: 16px; /* Importante para Mobile */
             transition: all 0.3s;
+            appearance: none; /* Remove estilo padrão iOS */
         }
         .form-input:focus {
             outline: none;
@@ -87,6 +84,7 @@
             background-color: white;
             box-shadow: 0 0 0 3px rgba(30, 64, 175, 0.1);
         }
+        
         label {
             font-size: 0.75rem;
             font-weight: 700;
@@ -96,105 +94,158 @@
             margin-bottom: 6px;
             display: block;
         }
+
+        /* Mobile Menu Animation */
+        #mobile-menu {
+            transition: transform 0.3s ease-in-out;
+            transform: translateX(100%);
+        }
+        #mobile-menu.open {
+            transform: translateX(0);
+        }
+
+        /* Testimonial Quote Icon */
+        .quote-icon {
+            opacity: 0.1;
+            font-size: 4rem;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
     </style>
   </head>
   <body>
     <!-- WhatsApp Floating Button -->
-    <a href="https://wa.me/5531994858574?text=Olá,%20Henrique!%20Gostaria%20de%20saber%20mais%20sobre%20sua%20metodologia." target="_blank" class="fixed bottom-6 right-6 bg-[#25d366] text-white w-14 h-14 rounded-full flex items-center justify-center text-3xl shadow-2xl z-[100] btn-hover transition-transform hover:scale-110">
+    <a href="https://wa.me/5531994858574?text=Olá,%20Henrique!%20Visitei%20seu%20site%20e%20quero%20transformar%20meus%20resultados." target="_blank" class="fixed bottom-6 right-6 bg-[#25d366] text-white w-14 h-14 rounded-full flex items-center justify-center text-3xl shadow-2xl z-[50] btn-hover active:scale-90">
         <i class="fab fa-whatsapp"></i>
     </a>
 
     <!-- Navigation -->
-    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-lg border-b border-slate-100 shadow-sm">
+    <nav class="fixed w-full z-[60] bg-white/95 backdrop-blur-lg border-b border-slate-100 shadow-sm transition-all duration-300">
       <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-        <div class="flex items-center">
-          <span class="font-extrabold text-primary text-2xl tracking-tighter uppercase cursor-pointer" onclick="window.scrollTo(0,0)">
+        <!-- Logo -->
+        <div class="flex items-center z-[70]">
+          <span class="font-extrabold text-primary text-xl md:text-2xl tracking-tighter uppercase cursor-pointer" onclick="window.scrollTo(0,0)">
             HENRIQUE <span class="text-blue-400">WILLIAM</span>
           </span>
         </div>
+
+        <!-- Desktop Menu -->
         <div class="hidden md:flex space-x-8 text-[11px] font-extrabold text-slate-500 tracking-widest uppercase">
           <a href="#especialista" class="hover:text-primary transition">O Especialista</a>
+          <a href="#depoimentos" class="hover:text-primary transition">Depoimentos</a>
           <a href="#personal" class="hover:text-primary transition">Personal Trainer</a>
-          <a href="#consultoria" class="hover:text-primary transition">Consultoria Online</a>
-          <a href="#faq" class="hover:text-primary transition">Dúvidas</a>
+          <a href="#consultoria" class="hover:text-primary transition">Consultoria</a>
         </div>
-        <a href="https://wa.me/5531994858574" target="_blank" class="bg-primary text-white px-7 py-3 rounded-full font-bold text-xs hover:bg-blue-800 transition-all btn-hover uppercase tracking-widest">
+
+        <!-- CTA Button Desktop -->
+        <a href="https://wa.me/5531994858574" target="_blank" class="hidden md:block bg-primary text-white px-7 py-3 rounded-full font-bold text-xs hover:bg-blue-800 transition-all btn-hover uppercase tracking-widest">
             Começar Agora
         </a>
+
+        <!-- Mobile Menu Button -->
+        <button id="menu-btn" class="md:hidden text-slate-800 text-2xl focus:outline-none z-[70]" onclick="toggleMenu()">
+            <i class="fas fa-bars"></i>
+        </button>
+      </div>
+
+      <!-- Mobile Fullscreen Menu -->
+      <div id="mobile-menu" class="fixed inset-0 bg-white z-[65] flex flex-col justify-center items-center h-screen w-screen px-6">
+          <div class="flex flex-col space-y-6 text-center text-lg font-bold text-slate-800 uppercase tracking-widest">
+              <a href="#especialista" onclick="toggleMenu()" class="py-2 border-b border-slate-100">O Especialista</a>
+              <a href="#depoimentos" onclick="toggleMenu()" class="py-2 border-b border-slate-100">Depoimentos</a>
+              <a href="#personal" onclick="toggleMenu()" class="py-2 border-b border-slate-100 text-primary">Personal Presencial</a>
+              <a href="#consultoria" onclick="toggleMenu()" class="py-2 border-b border-slate-100 text-amber-500">Consultoria Online</a>
+              <a href="#faq" onclick="toggleMenu()" class="py-2 border-b border-slate-100">Dúvidas</a>
+          </div>
+          <a href="https://wa.me/5531994858574" class="mt-8 bg-primary text-white px-10 py-4 rounded-full font-bold text-sm uppercase tracking-widest shadow-xl w-full max-w-xs text-center">
+              Falar no WhatsApp
+          </a>
       </div>
     </nav>
 
     <!-- Hero Section -->
-    <section class="relative min-h-screen flex items-center pt-20 overflow-hidden bg-slate-900">
+    <section class="relative min-h-[90vh] flex items-center pt-20 overflow-hidden bg-slate-900">
       <div class="absolute inset-0 z-0">
         <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?q=80&amp;w=2070&amp;auto=format&amp;fit=crop" alt="Pessoas saudáveis treinando" class="w-full h-full object-cover opacity-40" />
         <div class="absolute inset-0 img-overlay"></div>
       </div>
       <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center relative z-10 text-white">
-        <div class="animate-fade-in">
+        <div class="animate-fade-in pt-10 md:pt-0">
           <div class="inline-block bg-blue-500/20 text-blue-300 font-bold text-[10px] tracking-[0.2em] uppercase px-4 py-1.5 rounded-full mb-6 border border-blue-500/30">
-            Performance, saúde e bem estar
+            Ciência aplicada ao movimento
           </div>
-          <h1 class="text-5xl md:text-7xl font-extrabold leading-[1.1] mb-8">
-            Transforme sua vida através do
-            <span class="text-blue-400">exercício físico.</span>
+          <h1 class="text-4xl md:text-7xl font-extrabold leading-tight mb-6">
+            Pare de tentar.<br>
+            Comece a <span class="text-blue-400">evoluir.</span>
           </h1>
-          <p class="text-lg text-blue-100 mb-10 leading-relaxed max-w-lg opacity-90 font-medium">
-            Metodologia baseada em ciência para resultados reais. Treinamento personalizado para que você alcance sua melhor versão.
+          <p class="text-base md:text-lg text-blue-100 mb-8 leading-relaxed opacity-90 font-medium">
+            A maioria das pessoas treina errado e desiste. Eu ofereço a metodologia validada para quem cansou de não ter resultados. 
           </p>
-          <div class="flex flex-wrap gap-5">
-            <a href="#personal" class="bg-white text-blue-900 px-10 py-4 rounded-full font-extrabold shadow-xl hover:bg-slate-100 transition-all btn-hover uppercase tracking-wider text-sm">
-                Ver Planos
+          <div class="flex flex-col md:flex-row gap-4">
+            <a href="#personal" class="bg-white text-blue-900 px-8 py-4 rounded-full font-extrabold shadow-xl hover:bg-slate-100 transition-all btn-hover uppercase tracking-wider text-sm text-center">
+                Conhecer Método
             </a>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Pain Points Section -->
-    <section class="py-20 bg-slate-50 border-b border-slate-100">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-16">
-                 <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 mb-6 leading-tight uppercase tracking-tight">
-                    O que te impede de ter a <span class="text-blue-600">vida que você merece?</span>
-                 </h2>
-                 <p class="text-slate-500 max-w-2xl mx-auto font-medium">
-                    Muitas pessoas desistem por não terem o acompanhamento correto. Se você se identifica com alguma dessas situações, eu tenho a solução para você.
-                 </p>
-            </div>
-            
-            <div class="grid md:grid-cols-3 gap-8">
-                <!-- Item 1 -->
-                <div class="bg-white p-8 rounded-[30px] shadow-lg hover:shadow-2xl transition-all border border-slate-100 hover:-translate-y-2 duration-300">
-                    <div class="w-16 h-16 bg-red-50 rounded-2xl flex items-center justify-center text-red-500 text-2xl mb-6 shadow-sm">
-                        <i class="fas fa-heartbeat"></i>
+    <!-- Pain Points Section (IMPACTO) -->
+    <section class="py-16 md:py-24 bg-slate-50 border-b border-slate-100">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-10 items-center">
+                <div>
+                    <span class="text-red-500 font-black text-xs uppercase tracking-[0.3em] mb-4 block">Identificação</span>
+                    <h2 class="text-3xl md:text-5xl font-extrabold text-slate-900 mb-8 leading-tight">
+                        Seja sincero com você mesmo:
+                    </h2>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-full bg-red-100 flex items-center justify-center text-red-600 flex-shrink-0 mt-1 shadow-sm">
+                                <i class="fas fa-times text-lg"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg md:text-xl font-bold text-slate-800">Você não alcança seus objetivos?</h3>
+                                <p class="text-slate-500 text-sm mt-1">Meses na academia sem ver a mudança no espelho.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-full bg-red-100 flex items-center justify-center text-red-600 flex-shrink-0 mt-1 shadow-sm">
+                                <i class="fas fa-sync-alt text-lg"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg md:text-xl font-bold text-slate-800">Você vive em efeito sanfona?</h3>
+                                <p class="text-slate-500 text-sm mt-1">Emagrece e engorda, num ciclo frustrante e interminável.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-full bg-red-100 flex items-center justify-center text-red-600 flex-shrink-0 mt-1 shadow-sm">
+                                <i class="fas fa-user-injured text-lg"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg md:text-xl font-bold text-slate-800">Sente dores que nunca são resolvidas?</h3>
+                                <p class="text-slate-500 text-sm mt-1">Lombar, joelhos ou ombros limitando sua vida diária.</p>
+                            </div>
+                        </div>
                     </div>
-                    <h3 class="font-extrabold text-xl text-slate-800 mb-3">Dores e Limitações?</h3>
-                    <p class="text-slate-500 text-sm leading-relaxed font-medium">
-                        Sente desconforto na coluna, joelhos ou articulações que te impedem de aproveitar o dia a dia, brincar com os filhos ou praticar esportes?
-                    </p>
                 </div>
 
-                <!-- Item 2 -->
-                <div class="bg-white p-8 rounded-[30px] shadow-lg hover:shadow-2xl transition-all border border-slate-100 hover:-translate-y-2 duration-300">
-                    <div class="w-16 h-16 bg-amber-50 rounded-2xl flex items-center justify-center text-amber-500 text-2xl mb-6 shadow-sm">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <h3 class="font-extrabold text-xl text-slate-800 mb-3">Resultados Estagnados?</h3>
-                    <p class="text-slate-500 text-sm leading-relaxed font-medium">
-                        Treina regularmente mas sente que seu corpo não muda? A falta de periodização científica e ajuste de carga pode ser o grande problema.
+                <div class="bg-white p-6 md:p-10 rounded-[30px] shadow-xl border-l-4 border-blue-600 mt-8 md:mt-0">
+                    <h3 class="text-xl md:text-2xl font-black text-slate-900 mb-4 uppercase italic">Eu posso te ajudar.</h3>
+                    <p class="text-slate-600 mb-6 leading-relaxed text-sm md:text-base">
+                        A culpa não é sua, é da <strong>falta de estratégia</strong>. O corpo humano é uma máquina complexa que precisa de ajustes finos, não de treinos genéricos.
                     </p>
-                </div>
-
-                <!-- Item 3 -->
-                <div class="bg-white p-8 rounded-[30px] shadow-lg hover:shadow-2xl transition-all border border-slate-100 hover:-translate-y-2 duration-300">
-                    <div class="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center text-blue-500 text-2xl mb-6 shadow-sm">
-                        <i class="fas fa-battery-quarter"></i>
+                    <div class="flex items-center gap-4">
+                        <img src="https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?q=80&w=150&auto=format&fit=crop" class="w-12 h-12 rounded-full object-cover ring-2 ring-blue-500" alt="Henrique">
+                        <div>
+                            <p class="text-sm font-bold text-slate-900">Henrique William</p>
+                            <p class="text-xs text-slate-500">Seu Treinador</p>
+                        </div>
                     </div>
-                    <h3 class="font-extrabold text-xl text-slate-800 mb-3">Saúde em Risco?</h3>
-                    <p class="text-slate-500 text-sm leading-relaxed font-medium">
-                        Precisa controlar hipertensão, diabetes ou obesidade? O exercício físico é o remédio mais poderoso quando prescrito na dose certa.
-                    </p>
                 </div>
             </div>
         </div>
@@ -203,259 +254,244 @@
     <!-- Specialist Authority Section -->
     <section id="especialista" class="section-padding bg-white">
       <div class="max-w-7xl mx-auto px-6">
-        <div class="flex flex-col md:flex-row items-center gap-12 mb-20">
-          <div class="md:w-1/2">
-            <img src="https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?q=80&amp;w=2069&amp;auto=format&amp;fit=crop" alt="Henrique William em ação" class="rounded-[40px] shadow-2xl" />
-          </div>
-          <div class="md:w-1/2">
-            <span class="text-primary font-black text-xs uppercase tracking-[0.3em] mb-4 block">Formação Técnica</span>
-            <h2 class="text-4xl font-extrabold text-slate-900 mb-6 uppercase tracking-tighter">
-              O Especialista
+        <div class="text-center mb-12 max-w-3xl mx-auto">
+            <span class="text-primary font-black text-xs uppercase tracking-[0.3em] mb-3 block">Autoridade Técnica</span>
+            <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 mb-4 uppercase tracking-tighter">
+              Por que confiar em mim?
             </h2>
-            <p class="text-slate-600 mb-8 leading-relaxed font-medium">
-              Com anos de experiência e formação sólida, ajudo pessoas de todas as idades a recuperarem a vitalidade e atingirem seus objetivos reais sem abrir mão da segurança.
+            <p class="text-slate-600 leading-relaxed font-medium text-sm md:text-base">
+              Minha metodologia é pautada em anos de estudo. Você não será uma cobaia; será um caso de sucesso.
             </p>
-            <div class="h-1.5 w-20 bg-amber-400 rounded-full"></div>
-          </div>
         </div>
-        <div class="grid md:grid-cols-3 gap-8">
-          <div class="curriculum-card p-10 rounded-3xl card-shadow text-center md:text-left">
-            <i class="fas fa-graduation-cap text-primary text-3xl mb-6 block"></i>
-            <h4 class="font-bold text-slate-800 mb-3 uppercase text-sm tracking-tight">
-              Bacharel em Educação Física
+        
+        <div class="grid md:grid-cols-3 gap-6">
+          <div class="curriculum-card p-8 rounded-3xl card-shadow">
+            <i class="fas fa-graduation-cap text-primary text-3xl mb-4 block"></i>
+            <h4 class="font-bold text-slate-800 mb-2 uppercase text-sm tracking-tight">
+              Bacharel em Ed. Física
             </h4>
-            <p class="text-sm text-slate-500 leading-relaxed font-medium">
-              Fisiologia e biomecânica aplicadas para resultados seguros e eficientes.
+            <p class="text-xs md:text-sm text-slate-500 leading-relaxed font-medium">
+              Domínio da fisiologia e biomecânica para garantir máximo resultado com mínimo risco.
             </p>
           </div>
-          <div class="curriculum-card p-10 rounded-3xl card-shadow text-center md:text-left">
-            <i class="fas fa-user-md text-primary text-3xl mb-6 block"></i>
-            <h4 class="font-bold text-slate-800 mb-3 uppercase text-sm tracking-tight">
-              Pós-Graduado em Grupos Especiais
+          <div class="curriculum-card p-8 rounded-3xl card-shadow">
+            <i class="fas fa-user-md text-primary text-3xl mb-4 block"></i>
+            <h4 class="font-bold text-slate-800 mb-2 uppercase text-sm tracking-tight">
+              Grupos Especiais
             </h4>
-            <p class="text-sm text-slate-500 leading-relaxed font-medium">
-              Treinamento seguro para obesos, idosos, hipertensos e diabéticos.
+            <p class="text-xs md:text-sm text-slate-500 leading-relaxed font-medium">
+              Expertise clínica para treinar hipertensos, diabéticos e obesos com segurança total.
             </p>
           </div>
-          <div class="curriculum-card p-10 rounded-3xl card-shadow text-center md:text-left">
-            <i class="fas fa-bone text-primary text-3xl mb-6 block"></i>
-            <h4 class="font-bold text-slate-800 mb-3 uppercase text-sm tracking-tight">
-              Pós-graduado em Reabilitação
+          <div class="curriculum-card p-8 rounded-3xl card-shadow">
+            <i class="fas fa-bone text-primary text-3xl mb-4 block"></i>
+            <h4 class="font-bold text-slate-800 mb-2 uppercase text-sm tracking-tight">
+              Especialista em Reabilitação
             </h4>
-            <p class="text-sm text-slate-500 leading-relaxed font-medium">
-              Recupere sua mobilidade e corrija sua postura com exercícios direcionados e ciência.
+            <p class="text-xs md:text-sm text-slate-500 leading-relaxed font-medium">
+              Elimine dores e recupere lesões. Eu corrijo sua postura para você viver sem limitações.
             </p>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- Testimonials Section (NOVA SESSÃO) -->
+    <section id="depoimentos" class="section-padding bg-slate-50 border-t border-slate-100 relative overflow-hidden">
+        <!-- Decoration -->
+        <div class="absolute top-0 right-0 w-64 h-64 bg-blue-100 rounded-full filter blur-3xl opacity-30 -translate-y-1/2 translate-x-1/2"></div>
+        
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="text-center mb-12">
+                <span class="text-slate-500 font-black text-xs uppercase tracking-[0.3em] mb-3 block">Histórias de Sucesso</span>
+                <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 mb-4 uppercase tracking-tighter">
+                    O que dizem meus alunos
+                </h2>
+                <div class="h-1.5 w-20 bg-primary rounded-full mx-auto"></div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Depoimento 1 (Personal) -->
+                <div class="bg-white p-8 md:p-10 rounded-[30px] card-shadow relative">
+                    <i class="fas fa-quote-right quote-icon text-slate-300"></i>
+                    <div class="flex items-center gap-2 mb-6">
+                        <span class="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest">
+                            <i class="fas fa-dumbbell mr-1"></i> Aluna Personal
+                        </span>
+                        <div class="flex text-amber-400 text-xs">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-slate-600 text-sm md:text-base leading-relaxed mb-6 font-medium italic">
+                        "Profissional extremamente pontual, com ótimo domínio da área e muito conhecimento técnico. Durante os treinos, explica tudo com clareza e utiliza termos técnicos, o que passa muita segurança. [...] Treino com ele há 3 anos, o que só reforça a confiança no trabalho. Gosto muito do fato de ele deixar claro que o resultado só vem quando o aluno também tem compromisso... é um trabalho sério, de parceria. Recomendo muito!"
+                    </p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center text-white font-bold text-sm">L</div>
+                        <div>
+                            <p class="font-bold text-slate-900 text-sm">Leticia</p>
+                            <p class="text-xs text-slate-400 font-bold uppercase">3 anos de acompanhamento</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Depoimento 2 (Consultoria) -->
+                <div class="bg-white p-8 md:p-10 rounded-[30px] card-shadow relative border-t-4 border-amber-400 md:border-t-0 md:border-l-4">
+                    <i class="fas fa-quote-right quote-icon text-slate-300"></i>
+                    <div class="flex items-center gap-2 mb-6">
+                        <span class="bg-amber-100 text-amber-700 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest">
+                            <i class="fas fa-laptop mr-1"></i> Consultoria Online
+                        </span>
+                        <div class="flex text-amber-400 text-xs">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-slate-600 text-sm md:text-base leading-relaxed mb-6 font-medium italic">
+                        "Oi, sou Isabelle e faço acompanhamento com Henrique por consultoria on-line há 5 meses. Me ajudou muito na minha recuperação pós-cirúrgica e também a atingir outros objetivos como emagrecimento e melhoria da minha saúde! O suporte faz toda a diferença."
+                    </p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-amber-500 flex items-center justify-center text-white font-bold text-sm">I</div>
+                        <div>
+                            <p class="font-bold text-slate-900 text-sm">Isabelle</p>
+                            <p class="text-xs text-slate-400 font-bold uppercase">5 meses de consultoria</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Personal Trainer Plans -->
     <section id="personal" class="section-padding bg-slate-50 border-y border-slate-200">
       <div class="max-w-7xl mx-auto px-6">
-        <div class="text-center mb-16">
-          <h2 class="text-4xl font-extrabold text-slate-900 mb-4 uppercase tracking-tighter">
+        <div class="text-center mb-12">
+          <div class="inline-block bg-slate-900 text-amber-400 px-6 py-2 rounded-full text-[10px] font-black uppercase tracking-widest mb-4">
+            <i class="fas fa-crown mr-2"></i> Experiência Premium
+          </div>
+          <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 mb-4 uppercase tracking-tighter">
             Personal Presencial
           </h2>
-          <p class="text-slate-500 font-bold text-xs uppercase tracking-widest">
-            Atendimento exclusivo em Belo Horizonte
+          <p class="text-slate-500 font-bold text-xs md:text-sm max-w-xl mx-auto mb-2">
+            A elite do treinamento. Eu estarei ao seu lado, corrigindo cada detalhe e ajustando a carga em tempo real.
           </p>
+          <p class="text-[10px] text-slate-400 font-bold uppercase tracking-widest">BH e Região</p>
         </div>
-        <div class="grid lg:grid-cols-3 gap-8 items-start">
-          <!-- BRONZE (Mensal) -->
-          <div class="bg-white p-10 rounded-[40px] border border-slate-200 card-shadow flex flex-col hover:-translate-y-2 transition-transform duration-300">
-            <div class="flex justify-between items-center mb-6">
-              <span class="text-amber-800 bg-amber-100 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest">Bronze</span>
-              <div class="text-2xl font-extrabold text-slate-800 uppercase">Mensal</div>
-            </div>
-            <div class="space-y-4 mb-8 text-sm font-bold text-slate-700">
-              <div class="flex justify-between py-3 border-b border-slate-100">
-                <span>2x por semana</span>
-                <span class="text-primary">R$ 900</span>
-              </div>
-              <div class="flex justify-between py-3 border-b border-slate-100">
-                <span>3x por semana</span>
-                <span class="text-primary">R$ 1.350</span>
-              </div>
-              <div class="flex justify-between py-3 border-b border-slate-100">
-                <span>4x por semana</span>
-                <span class="text-primary">R$ 1.680</span>
-              </div>
-              <div class="flex justify-between py-3">
-                <span>5x por semana</span>
-                <span class="text-primary">R$ 2.000</span>
-              </div>
-            </div>
-            <div class="bg-blue-50 p-4 rounded-2xl mb-8 text-[11px] font-bold text-blue-800 leading-relaxed">
-              <i class="fas fa-info-circle mr-1"></i>
-              1ª Avaliação gratuita.<br />
-              Reavaliações subsequentes: R$ 150,00 cada.
-            </div>
-            <a href="https://wa.me/5531994858574?text=Olá,%20tenho%20interesse%20no%20Plano%20Bronze%20(Mensal)." target="_blank" class="mt-auto block text-center py-4 rounded-2xl bg-slate-100 text-slate-800 font-black hover:bg-primary hover:text-white transition-all text-xs uppercase tracking-widest">
-                Selecionar Bronze
-            </a>
-          </div>
 
-          <!-- OURO (Semestral) - MOST POPULAR -->
-          <div class="bg-primary p-12 rounded-[40px] text-white flex flex-col scale-105 z-10 shadow-2xl relative overflow-hidden border-4 border-amber-400">
+        <div class="grid lg:grid-cols-3 gap-8 items-start">
+          <!-- OURO (Mobile: Primeiro item por ser o mais importante) -->
+          <div class="order-first lg:order-2 bg-primary p-8 md:p-12 rounded-[40px] text-white flex flex-col scale-100 lg:scale-105 z-10 shadow-2xl relative overflow-hidden border-4 border-amber-400 mb-8 lg:mb-0">
             <div class="absolute top-0 right-0 bg-amber-400 text-blue-900 text-[10px] font-black px-10 py-2 rotate-45 translate-x-10 translate-y-4 shadow-lg">OURO</div>
             <div class="mb-4 text-center">
-              <span class="bg-white/20 text-white px-4 py-1 rounded-full text-[10px] font-black uppercase tracking-widest">O Plano Mais Vendido</span>
+              <span class="bg-white/20 text-white px-4 py-1 rounded-full text-[10px] font-black uppercase tracking-widest">Mais Vendido</span>
             </div>
             <div class="text-3xl font-extrabold mb-8 uppercase text-center">Semestral</div>
-            <div class="space-y-5 mb-8 text-sm font-bold">
-              <div class="flex flex-col py-3 border-b border-white/10">
+            <div class="space-y-4 mb-8 text-sm font-bold">
+              <div class="flex flex-col py-2 border-b border-white/10">
                 <div class="flex justify-between">
                   <span>2x por semana</span>
                   <span class="text-amber-400 text-lg">R$ 800</span>
                 </div>
-                <span class="badge-savings mt-1 self-start">Economia de R$ 600,00 no contrato</span>
+                <span class="badge-savings mt-1 self-start">Economia de R$ 600,00</span>
               </div>
-              <div class="flex flex-col py-3 border-b border-white/10">
+              <div class="flex flex-col py-2 border-b border-white/10">
                 <div class="flex justify-between">
                   <span>3x por semana</span>
                   <span class="text-amber-400 text-lg">R$ 1.200</span>
                 </div>
-                <span class="badge-savings mt-1 self-start">Economia de R$ 900,00 no contrato</span>
-              </div>
-              <div class="flex justify-between py-3 border-b border-white/10">
-                <span>4x por semana</span>
-                <span class="text-amber-400 text-lg">R$ 1.520</span>
-              </div>
-              <div class="flex justify-between py-3">
-                <span>5x por semana</span>
-                <span class="text-amber-400 text-lg">R$ 1.800</span>
+                <span class="badge-savings mt-1 self-start">Economia de R$ 900,00</span>
               </div>
             </div>
-            <div class="bg-white/10 p-5 rounded-2xl mb-8 text-[11px] font-bold border border-white/10">
-              <p class="mb-2 text-amber-300 uppercase tracking-wider">
-                <i class="fas fa-star mr-1"></i> Benefícios Exclusivos:
-              </p>
-              <ul class="space-y-1 opacity-90">
-                <li>• 3 avaliações já inclusas</li>
-                <li>• Planilhas comparativas ao final</li>
-                <li>• Planejamento de longo prazo</li>
-              </ul>
-            </div>
-            <a href="https://wa.me/5531994858574?text=Olá,%20tenho%20interesse%20no%20Plano%20Ouro%20(Semestral)." target="_blank" class="mt-auto block text-center py-5 rounded-2xl bg-amber-400 text-blue-900 font-black hover:bg-amber-300 transition-all text-xs uppercase tracking-widest shadow-xl transform hover:scale-105">
-                Selecionar Ouro
+            <a href="https://wa.me/5531994858574?text=Olá,%20tenho%20interesse%20no%20Plano%20Ouro%20(Semestral)." target="_blank" class="mt-auto block text-center py-5 rounded-2xl bg-amber-400 text-blue-900 font-black hover:bg-amber-300 transition-all text-xs uppercase tracking-widest shadow-xl">
+                Quero o Plano Ouro
             </a>
           </div>
 
-          <!-- PRATA (Trimestral) -->
-          <div class="bg-white p-10 rounded-[40px] border border-slate-200 card-shadow flex flex-col hover:-translate-y-2 transition-transform duration-300">
+          <!-- BRONZE -->
+          <div class="order-2 lg:order-1 bg-white p-8 md:p-10 rounded-[40px] border border-slate-200 card-shadow flex flex-col">
+            <div class="flex justify-between items-center mb-6">
+              <span class="text-amber-800 bg-amber-100 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest">Bronze</span>
+              <div class="text-xl font-extrabold text-slate-800 uppercase">Mensal</div>
+            </div>
+            <div class="space-y-4 mb-6 text-sm font-bold text-slate-700">
+              <div class="flex justify-between py-2 border-b border-slate-100">
+                <span>2x por semana</span>
+                <span class="text-primary">R$ 900</span>
+              </div>
+              <div class="flex justify-between py-2 border-b border-slate-100">
+                <span>3x por semana</span>
+                <span class="text-primary">R$ 1.350</span>
+              </div>
+            </div>
+            <a href="https://wa.me/5531994858574?text=Olá,%20tenho%20interesse%20no%20Plano%20Bronze%20(Mensal)." target="_blank" class="mt-auto block text-center py-4 rounded-2xl bg-slate-100 text-slate-800 font-black hover:bg-primary hover:text-white transition-all text-xs uppercase tracking-widest">
+                Quero ser Bronze
+            </a>
+          </div>
+
+          <!-- PRATA -->
+          <div class="order-3 bg-white p-8 md:p-10 rounded-[40px] border border-slate-200 card-shadow flex flex-col">
             <div class="flex justify-between items-center mb-6">
               <span class="text-slate-500 bg-slate-100 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest">Prata</span>
-              <div class="text-2xl font-extrabold text-slate-800 uppercase">Trimestral</div>
+              <div class="text-xl font-extrabold text-slate-800 uppercase">Trimestral</div>
             </div>
-            <div class="space-y-4 mb-8 text-sm font-bold text-slate-700">
-              <div class="flex justify-between py-3 border-b border-slate-100">
+            <div class="space-y-4 mb-6 text-sm font-bold text-slate-700">
+              <div class="flex justify-between py-2 border-b border-slate-100">
                 <span>2x por semana</span>
                 <span class="text-primary">R$ 840</span>
               </div>
-              <div class="flex justify-between py-3 border-b border-slate-100">
+              <div class="flex justify-between py-2 border-b border-slate-100">
                 <span>3x por semana</span>
                 <span class="text-primary">R$ 1.260</span>
               </div>
-              <div class="flex justify-between py-3 border-b border-slate-100">
-                <span>4x por semana</span>
-                <span class="text-primary">R$ 1.600</span>
-              </div>
-              <div class="flex justify-between py-3">
-                <span>5x por semana</span>
-                <span class="text-primary">R$ 1.900</span>
-              </div>
-            </div>
-            <div class="bg-blue-50 p-4 rounded-2xl mb-8 text-[11px] font-bold text-blue-800 leading-relaxed">
-              <i class="fas fa-info-circle mr-1"></i>
-              1ª Avaliação gratuita.<br />
-              Reavaliações subsequentes: R$ 150,00 cada.
             </div>
             <a href="https://wa.me/5531994858574?text=Olá,%20tenho%20interesse%20no%20Plano%20Prata%20(Trimestral)." target="_blank" class="mt-auto block text-center py-4 rounded-2xl bg-slate-100 text-slate-800 font-black hover:bg-primary hover:text-white transition-all text-xs uppercase tracking-widest">
-                Selecionar Prata
+                Quero ser Prata
             </a>
           </div>
         </div>
 
-        <!-- Payment Methods -->
-        <div class="mt-16 text-center max-w-xl mx-auto bg-white p-8 rounded-[30px] border border-slate-100 card-shadow">
-          <p class="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-6">
-            Formas de Pagamento Aceitas
-          </p>
-          <div class="flex justify-center items-center gap-8 md:gap-12">
-            <div class="flex flex-col items-center gap-2">
-              <div class="w-12 h-12 flex items-center justify-center rounded-xl bg-slate-50 text-slate-400">
-                <i class="fas fa-qrcode text-xl"></i>
-              </div>
-              <span class="text-[9px] font-black text-slate-500 uppercase">Pix</span>
-            </div>
-            <div class="flex flex-col items-center gap-2">
-              <div class="w-12 h-12 flex items-center justify-center rounded-xl bg-slate-50 text-slate-400">
-                <i class="fas fa-credit-card text-xl"></i>
-              </div>
-              <span class="text-[9px] font-black text-slate-500 uppercase leading-none text-center">
-                Cartão<br />(Débito/Crédito)
-              </span>
-            </div>
-            <div class="flex flex-col items-center gap-2">
-              <div class="w-12 h-12 flex items-center justify-center rounded-xl bg-slate-50 text-slate-400">
-                <i class="fas fa-file-invoice-dollar text-xl"></i>
-              </div>
-              <span class="text-[9px] font-black text-slate-500 uppercase">Boleto</span>
-            </div>
-          </div>
-        </div>
-        <p class="text-center mt-10 text-slate-400 text-[10px] font-bold uppercase tracking-widest">
-          *Valores mensais para pagamento recorrente no plano escolhido.
-        </p>
-
-        <!-- FORMULÁRIO DE CADASTRO PERSONAL -->
-        <div class="mt-24 max-w-4xl mx-auto bg-white rounded-[40px] shadow-2xl border border-slate-100 overflow-hidden relative">
+        <!-- FORMULÁRIO DE CADASTRO -->
+        <div class="mt-16 md:mt-24 max-w-4xl mx-auto bg-white rounded-[30px] md:rounded-[40px] shadow-2xl border border-slate-100 overflow-hidden relative">
             <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-blue-500 via-primary to-blue-500"></div>
-            <div class="p-8 md:p-12">
-                <div class="text-center mb-10">
-                    <span class="bg-blue-50 text-blue-600 px-4 py-1.5 rounded-full text-[10px] font-extrabold uppercase tracking-widest">Vagas Limitadas</span>
-                    <h3 class="text-2xl md:text-3xl font-extrabold text-slate-900 mt-6 mb-3 uppercase">Solicitação de Vaga e Análise de Perfil</h3>
-                    <p class="text-slate-500 text-sm font-medium leading-relaxed max-w-xl mx-auto">
-                        Para garantir a excelência no atendimento, o número de alunos presenciais é restrito. Preencha seus dados abaixo para verificarmos a disponibilidade e entrarmos em contato.
+            <div class="p-6 md:p-12">
+                <div class="text-center mb-8">
+                    <span class="bg-blue-50 text-blue-600 px-4 py-1.5 rounded-full text-[10px] font-extrabold uppercase tracking-widest">Atendimento Exclusivo</span>
+                    <h3 class="text-xl md:text-3xl font-extrabold text-slate-900 mt-4 mb-3 uppercase">Candidatura para Vaga</h3>
+                    <p class="text-slate-500 text-xs md:text-sm font-medium leading-relaxed max-w-xl mx-auto">
+                        Devido à alta demanda e à personalização extrema, o número de alunos é limitado.
                     </p>
                 </div>
 
-                <form id="cadastroForm" class="grid md:grid-cols-2 gap-6" onsubmit="enviarWhatsApp(event)">
-                    <!-- Nome -->
+                <form id="cadastroForm" class="grid md:grid-cols-2 gap-4 md:gap-6" onsubmit="enviarWhatsApp(event)">
+                    <!-- Inputs Otimizados para Mobile (col-span-2 no mobile para ocupar largura total) -->
                     <div class="col-span-2 md:col-span-1">
                         <label for="nome">Nome Completo</label>
                         <input type="text" id="nome" class="form-input" placeholder="Digite seu nome" required>
                     </div>
 
-                    <!-- Idade e Gênero -->
-                    <div class="grid grid-cols-2 gap-6 col-span-2 md:col-span-1">
+                    <div class="grid grid-cols-2 gap-4 col-span-2 md:col-span-1">
                         <div>
                             <label for="idade">Idade</label>
                             <input type="number" id="idade" class="form-input" placeholder="Ex: 30" required>
                         </div>
                         <div>
                             <label for="genero">Gênero</label>
-                            <select id="genero" class="form-input cursor-pointer" required>
+                            <select id="genero" class="form-input bg-white" required>
                                 <option value="" disabled selected>Selecione</option>
                                 <option value="Masculino">Masculino</option>
                                 <option value="Feminino">Feminino</option>
-                                <option value="Prefiro não dizer">Outro</option>
+                                <option value="Outro">Outro</option>
                             </select>
                         </div>
                     </div>
 
-                    <!-- Email -->
-                    <div class="col-span-2 md:col-span-1">
+                    <div class="col-span-2">
                         <label for="email">E-mail</label>
                         <input type="email" id="email" class="form-input" placeholder="seu@email.com" required>
                     </div>
 
-                    <!-- Frequência -->
                     <div class="col-span-2 md:col-span-1">
-                        <label for="frequencia">Frequência Desejada</label>
-                        <select id="frequencia" class="form-input cursor-pointer" required>
-                            <option value="" disabled selected>Quantas vezes na semana?</option>
+                        <label for="frequencia">Frequência</label>
+                        <select id="frequencia" class="form-input bg-white" required>
+                            <option value="" disabled selected>Quantas vezes?</option>
                             <option value="2x na semana">2x na semana</option>
                             <option value="3x na semana">3x na semana</option>
                             <option value="4x na semana">4x na semana</option>
@@ -463,51 +499,41 @@
                         </select>
                     </div>
 
-                    <!-- Plano de Interesse -->
                     <div class="col-span-2 md:col-span-1">
                         <label for="plano">Plano de Interesse</label>
-                        <select id="plano" class="form-input cursor-pointer" required>
-                            <option value="" disabled selected>Qual plano prefere?</option>
+                        <select id="plano" class="form-input bg-white" required>
+                            <option value="" disabled selected>Qual plano?</option>
                             <option value="Bronze (Mensal)">Bronze (Mensal)</option>
                             <option value="Prata (Trimestral)">Prata (Trimestral)</option>
                             <option value="Ouro (Semestral)">Ouro (Semestral)</option>
-                            <option value="Ainda estou decidindo">Ainda estou decidindo</option>
                         </select>
                     </div>
 
-                    <!-- Horários -->
                     <div class="col-span-2 md:col-span-1">
-                        <label for="horario">Horário de Preferência</label>
-                        <select id="horario" class="form-input cursor-pointer" required>
-                            <option value="" disabled selected>Qual turno prefere?</option>
-                            <option value="Manhã (06h - 12h)">Manhã (06h - 12h)</option>
-                            <option value="Tarde (12h - 18h)">Tarde (12h - 18h)</option>
-                            <option value="Noite (18h - 22h)">Noite (18h - 22h)</option>
-                            <option value="Flexível">Tenho horário flexível</option>
+                        <label for="horario">Horário</label>
+                        <select id="horario" class="form-input bg-white" required>
+                            <option value="" disabled selected>Turno?</option>
+                            <option value="Manhã">Manhã (06h - 12h)</option>
+                            <option value="Tarde">Tarde (12h - 18h)</option>
+                            <option value="Noite">Noite (18h - 22h)</option>
                         </select>
                     </div>
 
-                    <!-- Como conheceu -->
-                    <div class="col-span-2">
-                        <label for="conheceu">Como nos conheceu?</label>
-                        <select id="conheceu" class="form-input cursor-pointer">
-                            <option value="" disabled selected>Selecione</option>
+                    <div class="col-span-2 md:col-span-1">
+                        <label for="conheceu">Origem</label>
+                        <select id="conheceu" class="form-input bg-white">
+                            <option value="" disabled selected>Conheceu onde?</option>
                             <option value="Instagram">Instagram</option>
-                            <option value="Indicação">Indicação de amigo/aluno</option>
-                            <option value="Google">Pesquisa no Google</option>
-                            <option value="Outros">Outros</option>
+                            <option value="Indicação">Indicação</option>
+                            <option value="Google">Google</option>
                         </select>
                     </div>
 
-                    <!-- Botão -->
                     <div class="col-span-2 mt-4">
-                        <button type="submit" class="w-full bg-primary text-white py-4 rounded-xl font-bold uppercase tracking-widest shadow-xl hover:bg-blue-800 transition-all btn-hover flex justify-center items-center gap-2">
+                        <button type="submit" class="w-full bg-primary text-white py-4 rounded-xl font-bold uppercase tracking-widest shadow-xl hover:bg-blue-800 transition-all btn-hover flex justify-center items-center gap-2 text-sm md:text-base">
                             <span>Enviar Solicitação</span>
                             <i class="fas fa-paper-plane text-sm"></i>
                         </button>
-                        <p class="text-center text-xs text-slate-400 mt-4 font-medium">
-                            <i class="fas fa-lock mr-1"></i> Seus dados estão seguros e serão enviados diretamente para o WhatsApp.
-                        </p>
                     </div>
                 </form>
             </div>
@@ -518,139 +544,85 @@
     <!-- Online Consulting -->
     <section id="consultoria" class="section-padding bg-slate-900 text-white relative">
       <div class="max-w-7xl mx-auto px-6">
-        <div class="max-w-4xl mx-auto text-center mb-16">
+        <div class="max-w-4xl mx-auto text-center mb-12">
           <span class="text-blue-400 font-black text-xs uppercase tracking-[0.4em] mb-4 block">Consultoria Online</span>
-          <h2 class="text-5xl font-extrabold mb-8 uppercase tracking-tighter leading-none text-amber-400">
-            Treine onde quiser com excelência
+          <h2 class="text-3xl md:text-5xl font-extrabold mb-6 uppercase tracking-tighter leading-none text-amber-400">
+            Minha Metodologia no Seu Bolso
           </h2>
-          <p class="text-slate-400 text-lg leading-relaxed font-medium">
-            Planejamento de treinamento de alto nível no seu celular, com suporte direto para você evoluir com segurança.
+          <p class="text-slate-300 text-base md:text-lg leading-relaxed font-medium">
+            <span class="text-white font-bold">A mesma ciência, com total liberdade de horário e o melhor custo-benefício.</span>
           </p>
         </div>
-        <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-20">
-          <!-- Plano Básico (Mensal) -->
-          <div class="bg-white/5 p-10 rounded-[40px] border border-white/10 flex flex-col hover:bg-white/10 transition-all transform hover:-translate-y-2">
+        
+        <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-16">
+          <!-- Básico -->
+          <div class="bg-white/5 p-8 rounded-[40px] border border-white/10 flex flex-col hover:bg-white/10 transition-all">
             <div class="flex justify-between items-start mb-6">
-              <span class="text-[10px] uppercase font-bold text-slate-500 tracking-widest">Plano Básico (Mensal)</span>
+              <span class="text-[10px] uppercase font-bold text-slate-500 tracking-widest">Básico (Mensal)</span>
               <i class="fas fa-calendar-day text-blue-400 text-xl"></i>
             </div>
             <span class="text-4xl font-black text-blue-400 mb-8">R$ 250</span>
-            <ul class="text-sm space-y-3 mb-10 text-slate-400 font-medium">
-              <li class="flex items-center gap-2">
-                <i class="fas fa-check text-xs text-blue-400"></i> Planilha via App Dedicado
-              </li>
-              <li class="flex items-center gap-2">
-                <i class="fas fa-check text-xs text-blue-400"></i> Avaliações físicas inclusas
-              </li>
-              <li class="flex items-center gap-2">
-                <i class="fas fa-check text-xs text-blue-400"></i> Suporte WhatsApp (1 dia/sem)
-              </li>
+            <ul class="text-sm space-y-3 mb-8 text-slate-400 font-medium">
+              <li class="flex items-center gap-2"><i class="fas fa-check text-xs text-blue-400"></i> Planilha via App</li>
+              <li class="flex items-center gap-2"><i class="fas fa-check text-xs text-blue-400"></i> Avaliações inclusas</li>
+              <li class="flex items-center gap-2"><i class="fas fa-check text-xs text-blue-400"></i> Suporte WhatsApp (1x/sem)</li>
             </ul>
             <a href="https://wa.me/5531994858574?text=Olá,%20tenho%20interesse%20no%20Plano%20Básico%20(Mensal)." target="_blank" class="block text-center py-4 rounded-2xl border border-blue-400 text-blue-400 font-bold text-xs uppercase hover:bg-blue-400 hover:text-white transition-all tracking-widest">
-                Selecionar Básico
+                Quero o Básico
             </a>
           </div>
           
-          <!-- Plano Premium (Trimestral) -->
-          <div class="bg-white/5 p-10 rounded-[40px] border border-amber-400/30 flex flex-col hover:bg-white/10 transition-all transform hover:-translate-y-2 relative overflow-hidden">
+          <!-- Premium -->
+          <div class="bg-white/5 p-8 rounded-[40px] border border-amber-400/30 flex flex-col hover:bg-white/10 transition-all relative overflow-hidden">
             <div class="absolute top-0 right-0 bg-amber-400 text-blue-900 text-[8px] font-black px-6 py-1 rotate-45 translate-x-6 translate-y-3">POPULAR</div>
             <div class="flex justify-between items-start mb-6">
-              <span class="text-[10px] uppercase font-bold text-slate-500 tracking-widest">Plano Premium (Trimestral)</span>
-              <span class="bg-amber-400 text-blue-900 text-[9px] px-3 py-1 rounded-full font-black">MELHOR PREÇO</span>
+              <span class="text-[10px] uppercase font-bold text-slate-500 tracking-widest">Premium (Trimestral)</span>
+              <span class="bg-amber-400 text-blue-900 text-[9px] px-3 py-1 rounded-full font-black">TOP</span>
             </div>
             <span class="text-4xl font-black text-amber-400 mb-8">
                 R$ 200 <small class="text-xs text-slate-500 font-bold ml-1">/mês</small>
             </span>
-            <ul class="text-sm space-y-3 mb-10 text-slate-400 font-medium">
-              <li class="flex items-center gap-2">
-                <i class="fas fa-check text-xs text-amber-400"></i> Suporte Ilimitado via WhatsApp
-              </li>
-              <li class="flex items-center gap-2">
-                <i class="fas fa-check text-xs text-amber-400"></i> Planejamento de 12 semanas
-              </li>
-              <li class="flex items-center gap-2">
-                <i class="fas fa-check text-xs text-amber-400"></i> Avaliações físicas inclusas
-              </li>
-              <li class="flex items-center gap-2">
-                <i class="fas fa-check text-xs text-amber-400"></i> 1 Aula Remota ao Vivo*
-              </li>
-              <li class="text-[10px] text-slate-500 mt-2 italic">
-                *Mediante disponibilidade do treinador
-              </li>
+            <ul class="text-sm space-y-3 mb-8 text-slate-400 font-medium">
+              <li class="flex items-center gap-2"><i class="fas fa-check text-xs text-amber-400"></i> Suporte Ilimitado</li>
+              <li class="flex items-center gap-2"><i class="fas fa-check text-xs text-amber-400"></i> Planejamento 12 semanas</li>
+              <li class="flex items-center gap-2"><i class="fas fa-check text-xs text-amber-400"></i> Aula ao Vivo (Disponibilidade)</li>
             </ul>
             <a href="https://wa.me/5531994858574?text=Olá,%20tenho%20interesse%20no%20Plano%20Premium%20(Trimestral)." target="_blank" class="block text-center py-4 rounded-2xl bg-amber-400 text-blue-900 font-bold text-xs uppercase hover:bg-amber-300 transition-all tracking-widest">
-                Selecionar Premium
+                Quero o Premium
             </a>
           </div>
         </div>
 
-        <!-- NOVO FORMULÁRIO DE CONSULTORIA (GARANTA SUA VAGA) -->
-        <div class="mt-12 max-w-4xl mx-auto bg-white rounded-[40px] shadow-2xl overflow-hidden relative text-slate-900">
+        <!-- FORMULÁRIO CONSULTORIA -->
+        <div class="mt-12 max-w-4xl mx-auto bg-white rounded-[30px] shadow-2xl overflow-hidden relative text-slate-900">
             <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-amber-400 via-primary to-amber-400"></div>
-            <div class="p-8 md:p-12">
-                <div class="text-center mb-10">
+            <div class="p-6 md:p-12">
+                <div class="text-center mb-8">
                     <span class="bg-amber-50 text-amber-600 px-4 py-1.5 rounded-full text-[10px] font-extrabold uppercase tracking-widest">Inscrições Abertas</span>
-                    <h3 class="text-2xl md:text-3xl font-extrabold text-slate-900 mt-6 mb-3 uppercase">Garanta sua Vaga</h3>
-                    <p class="text-slate-500 text-sm font-medium leading-relaxed max-w-xl mx-auto">
-                        Para manter o padrão de qualidade e o suporte próximo, as vagas para a consultoria online são controladas. Preencha seus dados para iniciar sua transformação.
+                    <h3 class="text-xl md:text-3xl font-extrabold text-slate-900 mt-4 mb-3 uppercase">Comece Agora (Vagas Online)</h3>
+                    <p class="text-slate-500 text-xs md:text-sm font-medium leading-relaxed max-w-xl mx-auto">
+                        Garanta sua vaga hoje e pare de perder tempo na academia.
                     </p>
                 </div>
 
-                <form id="cadastroConsultoriaForm" class="grid md:grid-cols-2 gap-6" onsubmit="enviarWhatsAppConsultoria(event)">
-                    <!-- Nome -->
-                    <div class="col-span-2 md:col-span-1">
+                <form id="cadastroConsultoriaForm" class="grid md:grid-cols-2 gap-4" onsubmit="enviarWhatsAppConsultoria(event)">
+                    <div class="col-span-2">
                         <label for="nomeConsultoria">Nome Completo</label>
-                        <input type="text" id="nomeConsultoria" class="form-input" placeholder="Digite seu nome" required>
+                        <input type="text" id="nomeConsultoria" class="form-input" placeholder="Seu nome" required>
                     </div>
-
-                    <!-- Idade e Gênero -->
-                    <div class="grid grid-cols-2 gap-6 col-span-2 md:col-span-1">
-                        <div>
-                            <label for="idadeConsultoria">Idade</label>
-                            <input type="number" id="idadeConsultoria" class="form-input" placeholder="Ex: 30" required>
-                        </div>
-                        <div>
-                            <label for="generoConsultoria">Gênero</label>
-                            <select id="generoConsultoria" class="form-input cursor-pointer" required>
-                                <option value="" disabled selected>Selecione</option>
-                                <option value="Masculino">Masculino</option>
-                                <option value="Feminino">Feminino</option>
-                                <option value="Prefiro não dizer">Outro</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <!-- Email -->
                     <div class="col-span-2">
                         <label for="emailConsultoria">E-mail</label>
                         <input type="email" id="emailConsultoria" class="form-input" placeholder="seu@email.com" required>
                     </div>
-
-                    <!-- Como conheceu -->
                     <div class="col-span-2 md:col-span-1">
-                        <label for="conheceuConsultoria">Como nos conheceu?</label>
-                        <select id="conheceuConsultoria" class="form-input cursor-pointer">
-                            <option value="" disabled selected>Selecione</option>
-                            <option value="Instagram">Instagram</option>
-                            <option value="Indicação">Indicação de amigo/aluno</option>
-                            <option value="Google">Pesquisa no Google</option>
-                            <option value="Outros">Outros</option>
+                        <label for="planoConsultoria">Plano</label>
+                        <select id="planoConsultoria" class="form-input bg-white" required>
+                            <option value="" disabled selected>Escolha o plano</option>
+                            <option value="Básico">Básico</option>
+                            <option value="Premium">Premium</option>
                         </select>
                     </div>
-
-                    <!-- Plano de Interesse -->
-                    <div class="col-span-2 md:col-span-1">
-                        <label for="planoConsultoria">Plano de Interesse</label>
-                        <select id="planoConsultoria" class="form-input cursor-pointer" required>
-                            <option value="" disabled selected>Qual plano prefere?</option>
-                            <option value="Básico (Mensal)">Básico (Mensal)</option>
-                            <option value="Premium (Trimestral)">Premium (Trimestral)</option>
-                            <option value="Ainda estou decidindo">Ainda estou decidindo</option>
-                        </select>
-                    </div>
-
-                    <!-- Botão -->
-                    <div class="col-span-2 mt-6">
+                    <div class="col-span-2 mt-4">
                         <button type="submit" class="w-full bg-amber-400 text-blue-900 py-4 rounded-xl font-bold uppercase tracking-widest shadow-xl hover:bg-amber-300 transition-all btn-hover flex justify-center items-center gap-2">
                             <span>Quero Minha Vaga</span>
                             <i class="fas fa-check-circle text-sm"></i>
@@ -659,124 +631,90 @@
                 </form>
             </div>
         </div>
-
       </div>
     </section>
 
-    <!-- FAQ Section (Dúvidas) -->
+    <!-- FAQ Section -->
     <section id="faq" class="section-padding bg-white border-t border-slate-100">
         <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-16">
-                <span class="text-primary font-black text-xs uppercase tracking-[0.3em] mb-4 block">Informações Importantes</span>
-                <h2 class="text-4xl font-extrabold text-slate-900 mb-4 uppercase tracking-tighter">
-                    Dúvidas Frequentes
+            <div class="text-center mb-12">
+                <span class="text-primary font-black text-xs uppercase tracking-[0.3em] mb-4 block">Dúvidas?</span>
+                <h2 class="text-3xl font-extrabold text-slate-900 mb-4 uppercase tracking-tighter">
+                    Perguntas Frequentes
                 </h2>
                 <div class="h-1.5 w-20 bg-amber-400 rounded-full mx-auto"></div>
             </div>
 
-            <div class="grid md:grid-cols-2 gap-x-12 gap-y-10">
-                <!-- NOVA PERGUNTA 1 -->
+            <div class="grid md:grid-cols-2 gap-6 md:gap-12">
                 <div class="faq-item">
-                    <h4 class="font-bold text-slate-900 mb-2 flex items-center gap-2">
-                        <i class="fas fa-user-check text-primary"></i> Para quem é o Personal Trainer?
+                    <h4 class="font-bold text-slate-900 mb-2 flex items-center gap-2 text-sm md:text-base">
+                        <i class="fas fa-user-check text-primary"></i> Para quem é o Personal?
                     </h4>
-                    <p class="text-sm text-slate-600 leading-relaxed font-medium">
-                        O Personal Trainer é um serviço premium focado em oferecer uma experiência exclusiva e de altíssima qualidade. É indicado para praticantes de todos os níveis (iniciantes a avançados) que buscam segurança e acompanhamento minucioso. Além disso, é a melhor opção para quem possui condições crônicas ou lesões pré-existentes, garantindo um ambiente de treino controlado e seguro.
-                    </p>
-                </div>
-
-                <!-- NOVA PERGUNTA 2 -->
-                <div class="faq-item">
-                    <h4 class="font-bold text-slate-900 mb-2 flex items-center gap-2">
-                        <i class="fas fa-laptop-medical text-primary"></i> Para quem é a Consultoria Online?
-                    </h4>
-                    <p class="text-sm text-slate-600 leading-relaxed font-medium">
-                        A Consultoria Online é ideal para quem já possui familiaridade com o ambiente de academia e alguma experiência prévia com exercícios. É a solução perfeita para otimizar seus resultados com excelente custo-benefício, unindo liberdade de horários a um planejamento profissional com monitoramento remoto, avaliações periódicas e suporte via WhatsApp e App exclusivo.
-                    </p>
-                </div>
-
-                <!-- Entrega e Suporte -->
-                <div class="faq-item">
-                    <h4 class="font-bold text-slate-900 mb-2 flex items-center gap-2">
-                        <i class="fas fa-mobile-alt text-primary"></i> Como recebo os treinos?
-                    </h4>
-                    <p class="text-sm text-slate-600 leading-relaxed font-medium">
-                        Os treinos são elaborados dentro de um aplicativo exclusivo, contendo vídeos explicativos e orientações totalmente individualizadas para o seu objetivo.
+                    <p class="text-xs md:text-sm text-slate-600 leading-relaxed font-medium">
+                        Serviço premium para quem busca segurança máxima, iniciantes, ou quem tem lesões.
                     </p>
                 </div>
 
                 <div class="faq-item">
-                    <h4 class="font-bold text-slate-900 mb-2 flex items-center gap-2">
-                        <i class="fab fa-whatsapp text-primary"></i> Como funciona o suporte?
+                    <h4 class="font-bold text-slate-900 mb-2 flex items-center gap-2 text-sm md:text-base">
+                        <i class="fas fa-laptop-medical text-primary"></i> Para quem é a Consultoria?
                     </h4>
-                    <p class="text-sm text-slate-600 leading-relaxed font-medium">
-                        Você terá suporte direto via WhatsApp para tirar dúvidas, além de poder enviar vídeos e fotos da sua execução para correção e ajustes.
+                    <p class="text-xs md:text-sm text-slate-600 leading-relaxed font-medium">
+                        Para quem já treina e quer otimizar resultados com liberdade de horário e custo-benefício.
                     </p>
                 </div>
 
-                <!-- Avaliações -->
                 <div class="faq-item">
-                    <h4 class="font-bold text-slate-900 mb-2 flex items-center gap-2">
+                    <h4 class="font-bold text-slate-900 mb-2 flex items-center gap-2 text-sm md:text-base">
                         <i class="fas fa-ruler-combined text-primary"></i> A avaliação física é presencial?
                     </h4>
-                    <p class="text-sm text-slate-600 leading-relaxed font-medium">
+                    <p class="text-xs md:text-sm text-slate-600 leading-relaxed font-medium">
                         Para residentes em Belo Horizonte, as avaliações de composição corporal (adipometria e perimetria) são presenciais.
                     </p>
                 </div>
 
                 <div class="faq-item">
-                    <h4 class="font-bold text-slate-900 mb-2 flex items-center gap-2">
-                        <i class="fas fa-tachometer-alt text-primary"></i> Como são avaliados performance e força?
+                    <h4 class="font-bold text-slate-900 mb-2 flex items-center gap-2 text-sm md:text-base">
+                        <i class="fas fa-tachometer-alt text-primary"></i> Avaliação de performance?
                     </h4>
-                    <p class="text-sm text-slate-600 leading-relaxed font-medium">
-                        Avaliações de performance (força e condicionamento cardiovascular) podem ser realizadas remotamente sempre que necessário para controle e ajuste da periodização, visando resultados reais.
+                    <p class="text-xs md:text-sm text-slate-600 leading-relaxed font-medium">
+                        Avaliações de performance podem ser realizadas remotamente sempre que necessário para controle e ajuste da periodização.
                     </p>
                 </div>
 
                 <div class="faq-item">
-                    <h4 class="font-bold text-slate-900 mb-2 flex items-center gap-2">
-                        <i class="fas fa-calendar-check text-primary"></i> Com que frequência sou avaliado?
+                    <h4 class="font-bold text-slate-900 mb-2 flex items-center gap-2 text-sm md:text-base">
+                        <i class="fas fa-calendar-check text-primary"></i> Frequência da avaliação?
                     </h4>
-                    <p class="text-sm text-slate-600 leading-relaxed font-medium">
-                        As avaliações são periódicas e definidas de acordo com a necessidade estratégica e o objetivo específico de cada cliente.
-                    </p>
-                </div>
-
-                <!-- Aulas Presenciais -->
-                <div class="faq-item">
-                    <h4 class="font-bold text-slate-900 mb-2 flex items-center gap-2">
-                        <i class="fas fa-user-friends text-primary"></i> Posso agendar uma aula presencial avulsa?
-                    </h4>
-                    <p class="text-sm text-slate-600 leading-relaxed font-medium">
-                        Sim. Alunos residentes em BH podem marcar aulas avulsas presenciais para ajustes técnicos ou treinos específicos, mediante disponibilidade de agenda do treinador.
+                    <p class="text-xs md:text-sm text-slate-600 leading-relaxed font-medium">
+                        As avaliações são periódicas e definidas de acordo com a necessidade estratégica e o objetivo específico.
                     </p>
                 </div>
 
                 <div class="faq-item">
-                    <h4 class="font-bold text-slate-900 mb-2 flex items-center gap-2">
-                        <i class="fas fa-ticket-alt text-primary"></i> Há custos extras na aula avulsa?
+                    <h4 class="font-bold text-slate-900 mb-2 flex items-center gap-2 text-sm md:text-base">
+                        <i class="fas fa-user-plus text-primary"></i> Aula presencial avulsa?
                     </h4>
-                    <p class="text-sm text-slate-600 leading-relaxed font-medium">
-                        Sim. O valor da hora/aula do treinador não inclui as taxas de uso da academia (diária/taxa de personal), que devem ser pagas à parte pelo aluno diretamente ao local.
+                    <p class="text-xs md:text-sm text-slate-600 leading-relaxed font-medium">
+                        Sim. Alunos de BH podem marcar aulas avulsas presenciais mediante disponibilidade.
                     </p>
                 </div>
 
-                <!-- Pagamentos -->
                 <div class="faq-item">
-                    <h4 class="font-bold text-slate-900 mb-2 flex items-center gap-2">
-                        <i class="fas fa-dollar-sign text-primary"></i> Os valores dos planos são mensais?
+                    <h4 class="font-bold text-slate-900 mb-2 flex items-center gap-2 text-sm md:text-base">
+                        <i class="fas fa-mobile-alt text-primary"></i> Como recebo os treinos?
                     </h4>
-                    <p class="text-sm text-slate-600 leading-relaxed font-medium">
-                        Sim, todos os valores indicados nos planos (mesmo nos pacotes trimestrais ou semestrais) referem-se ao valor equivalente a 1 (um) mês.
+                    <p class="text-xs md:text-sm text-slate-600 leading-relaxed font-medium">
+                        Via aplicativo exclusivo com vídeos explicativos individualizados.
                     </p>
                 </div>
                 
-                <div class="faq-item">
-                    <h4 class="font-bold text-slate-900 mb-2 flex items-center gap-2">
-                        <i class="far fa-credit-card text-primary"></i> Há taxas no cartão?
+                 <div class="faq-item">
+                    <h4 class="font-bold text-slate-900 mb-2 flex items-center gap-2 text-sm md:text-base">
+                        <i class="fas fa-dollar-sign text-primary"></i> Os valores são mensais?
                     </h4>
-                    <p class="text-sm text-slate-600 leading-relaxed font-medium">
-                        Planos contratados via cartão de crédito ou débito terão o acréscimo das taxas administrativas da operadora.
+                    <p class="text-xs md:text-sm text-slate-600 leading-relaxed font-medium">
+                        Sim, todos os valores apresentados são referentes à mensalidade.
                     </p>
                 </div>
             </div>
@@ -784,83 +722,77 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-slate-950 text-white pt-24 pb-12 px-6">
-      <div class="max-w-7xl mx-auto">
-        <div class="grid md:grid-cols-2 gap-16 mb-20">
+    <footer class="bg-slate-950 text-white pt-16 pb-12 px-6">
+      <div class="max-w-7xl mx-auto text-center md:text-left">
+        <div class="grid md:grid-cols-2 gap-10 mb-12">
           <div>
-            <h4 class="text-3xl font-black mb-8 tracking-tighter uppercase italic">
+            <h4 class="text-2xl font-black mb-6 tracking-tighter uppercase italic">
               Henrique <span class="text-blue-500">William</span>
             </h4>
-            <p class="text-slate-500 max-w-sm text-sm font-medium leading-relaxed">
-              Comprometido com a transformação de vidas através da ciência do movimento. Performance, reabilitação e bem-estar.
+            <p class="text-slate-500 text-xs md:text-sm font-medium leading-relaxed mx-auto md:mx-0 max-w-xs">
+              Comprometido com a transformação de vidas através da ciência do movimento.
             </p>
           </div>
-          <div class="text-right">
-            <p class="text-xs font-black text-slate-600 uppercase tracking-widest mb-2">Contato Direto</p>
-            <p class="text-4xl font-black text-white mb-4">+55 (31) 99485-8574</p>
+          <div class="md:text-right">
+            <p class="text-xs font-black text-slate-600 uppercase tracking-widest mb-2">WhatsApp</p>
+            <p class="text-2xl md:text-4xl font-black text-white mb-4">+55 (31) 99485-8574</p>
             <p class="text-[10px] font-bold text-slate-500 uppercase tracking-widest">
               Belo Horizonte - MG | CREF: 040018-G/MG
             </p>
           </div>
         </div>
-        <div class="pt-12 border-t border-white/5 text-center text-[10px] font-bold text-slate-700 uppercase tracking-[0.4em]">
-          © 2026 Henrique William - Todos os direitos reservados.
+        <div class="pt-8 border-t border-white/5 text-center text-[10px] font-bold text-slate-700 uppercase tracking-[0.4em]">
+          © 2026 Henrique William
         </div>
       </div>
     </footer>
 
-    <!-- Script para envio do WhatsApp -->
+    <!-- Scripts -->
     <script>
+        // Toggle Mobile Menu
+        function toggleMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const icon = document.querySelector('#menu-btn i');
+            
+            menu.classList.toggle('open');
+            
+            if (menu.classList.contains('open')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+                document.body.style.overflow = 'hidden'; // Prevent scrolling
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+                document.body.style.overflow = 'auto';
+            }
+        }
+
         function enviarWhatsApp(e) {
             e.preventDefault();
-            
             const nome = document.getElementById('nome').value;
-            const idade = document.getElementById('idade').value;
-            const genero = document.getElementById('genero').value;
-            const email = document.getElementById('email').value;
-            const frequencia = document.getElementById('frequencia').value;
             const plano = document.getElementById('plano').value;
-            const horario = document.getElementById('horario').value;
-            const conheceu = document.getElementById('conheceu').value;
-
-            const mensagem = `*NOVA SOLICITAÇÃO DE PERSONAL* 📄%0A%0A` +
-                             `*Nome:* ${nome}%0A` +
-                             `*Idade:* ${idade}%0A` +
-                             `*Gênero:* ${genero}%0A` +
-                             `*E-mail:* ${email}%0A` +
-                             `*Frequência:* ${frequencia}%0A` +
-                             `*Plano de Interesse:* ${plano}%0A` +
-                             `*Horário Preferido:* ${horario}%0A` +
-                             `*Como conheceu:* ${conheceu}%0A%0A` +
-                             `_Gostaria de verificar disponibilidade na agenda._`;
-
-            const url = `https://wa.me/5531994858574?text=${mensagem}`;
+            const frequencia = document.getElementById('frequencia').value;
             
-            window.open(url, '_blank');
+            const mensagem = `*SOLICITAÇÃO PERSONAL* 📄%0A%0A` +
+                             `*Nome:* ${nome}%0A` +
+                             `*Plano:* ${plano}%0A` +
+                             `*Frequência:* ${frequencia}%0A%0A` +
+                             `_Olá! Gostaria de agendar uma avaliação presencial._`;
+
+            window.open(`https://wa.me/5531994858574?text=${mensagem}`, '_blank');
         }
 
         function enviarWhatsAppConsultoria(e) {
             e.preventDefault();
-            
             const nome = document.getElementById('nomeConsultoria').value;
-            const idade = document.getElementById('idadeConsultoria').value;
-            const genero = document.getElementById('generoConsultoria').value;
-            const email = document.getElementById('emailConsultoria').value;
-            const conheceu = document.getElementById('conheceuConsultoria').value;
             const plano = document.getElementById('planoConsultoria').value;
 
-            const mensagem = `*GARANTIA DE VAGA CONSULTORIA ONLINE* 💻%0A%0A` +
+            const mensagem = `*VAGA CONSULTORIA ONLINE* 💻%0A%0A` +
                              `*Nome:* ${nome}%0A` +
-                             `*Idade:* ${idade}%0A` +
-                             `*Gênero:* ${genero}%0A` +
-                             `*E-mail:* ${email}%0A` +
-                             `*Como conheceu:* ${conheceu}%0A` +
-                             `*Plano de Interesse:* ${plano}%0A%0A` +
-                             `_Gostaria de iniciar a consultoria._`;
+                             `*Plano:* ${plano}%0A%0A` +
+                             `_Olá! Quero iniciar a consultoria._`;
 
-            const url = `https://wa.me/5531994858574?text=${mensagem}`;
-            
-            window.open(url, '_blank');
+            window.open(`https://wa.me/5531994858574?text=${mensagem}`, '_blank');
         }
     </script>
   </body>
